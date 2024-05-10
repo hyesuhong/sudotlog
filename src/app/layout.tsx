@@ -8,7 +8,11 @@ export const metadata: Metadata = {
 	description: '',
 };
 
-const rootClassName = css({ fontFamily: 'pretendard' });
+const rootClassName = css({
+	fontFamily: 'pretendard',
+	background: 'neutral.50',
+	color: 'neutral.900',
+});
 
 export default function RootLayout({
 	children,
