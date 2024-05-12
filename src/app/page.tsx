@@ -66,7 +66,7 @@ export default function Home() {
 					Su
 				</Link>
 				<span>.</span>
-				<Link href='/blog' className={linkClass({ kind: 'blog' })}>
+				<Link href='/posts' className={linkClass({ kind: 'blog' })}>
 					log
 				</Link>
 			</h1>
