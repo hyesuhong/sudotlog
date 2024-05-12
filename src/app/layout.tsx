@@ -1,3 +1,5 @@
+import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
 import { jetBrainsMono, pretendard } from '@/utils/font';
 import type { Metadata } from 'next';
 import { css } from '../../styled-system/css';
@@ -11,7 +13,7 @@ export const metadata: Metadata = {
 const rootClassName = css({
 	fontFamily: 'pretendard',
 	background: 'neutral.50',
-	color: 'neutral.900',
+	color: 'neutral.800',
 });
 
 export default function RootLayout({
@@ -24,7 +26,11 @@ export default function RootLayout({
 			lang='en'
 			className={`${pretendard.variable} ${jetBrainsMono.variable} ${rootClassName}`}
 		>
-			<body>{children}</body>
+			<body>
+				<Header />
+				{children}
+				<Footer />
+			</body>
 		</html>
 	);
 }
