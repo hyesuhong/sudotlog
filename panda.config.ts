@@ -19,6 +19,9 @@ export default defineConfig({
 			tokens: {
 				fonts: {
 					pretendard: { value: 'var(--font-pretendard), sans-serif' },
+					jetBrainsMonoVariable: {
+						value: 'var(--font-jet-brains-mono), monospace',
+					},
 				},
 				colors: {
 					neutral: {

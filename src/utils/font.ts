@@ -8,4 +8,22 @@ const pretendard = localFont({
 	variable: '--font-pretendard',
 });
 
-export { pretendard };
+const jetBrainsMono = localFont({
+	src: [
+		{
+			path: '../assets/fonts/jetBrainsMono/variable/JetBrainsMono[wght].ttf',
+			weight: '100 900',
+			style: 'normal',
+		},
+		{
+			path: '../assets/fonts/jetBrainsMono/variable/JetBrainsMono-Italic[wght].ttf',
+			weight: '100 900',
+			style: 'italic',
+		},
+	],
+	display: 'swap',
+	preload: true,
+	variable: '--font-jet-brains-mono',
+});
+
+export { jetBrainsMono, pretendard };
