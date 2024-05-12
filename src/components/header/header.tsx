@@ -20,7 +20,7 @@ const headerClass = css({
 export default function Header() {
 	const pathname = usePathname();
 
-	return (
+	return pathname === '/' ? null : (
 		<header className={headerClass}>
 			<NavLogo />
 		</header>
