@@ -1,3 +1,4 @@
+import { textStyles } from '@/config/theme';
 import { defineConfig } from '@pandacss/dev';
 
 export default defineConfig({
@@ -8,6 +9,7 @@ export default defineConfig({
 	include: [
 		'./src/components/**/*.{ts,tsx,js,jsx}',
 		'./src/app/**/*.{ts,tsx,js,jsx}',
+		'./src/styles/**/*.{ts,tsx,js,tsx}',
 	],
 
 	// Files to exclude
@@ -16,6 +18,7 @@ export default defineConfig({
 	// Useful for theme customization
 	theme: {
 		extend: {
+			textStyles: textStyles,
 			tokens: {
 				fonts: {
 					pretendard: { value: 'var(--font-pretendard), sans-serif' },
@@ -52,6 +55,8 @@ export default defineConfig({
 			},
 		},
 	},
+
+	importMap: 'styled-system',
 
 	// The output directory for your css system
 	outdir: 'styled-system',
