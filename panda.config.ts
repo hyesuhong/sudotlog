@@ -19,14 +19,14 @@ export default defineConfig({
 			tokens: {
 				fonts: {
 					pretendard: { value: 'var(--font-pretendard), sans-serif' },
-					jetBrainsMonoVariable: {
+					jetBrainsMono: {
 						value: 'var(--font-jet-brains-mono), monospace',
 					},
 				},
 				colors: {
 					neutral: {
 						50: { value: '#FAFAFB' },
-						100: { value: '#F7F6F9' },
+						100: { value: '#EEEDF0' },
 						200: { value: '#DEDDE0' },
 						300: { value: '#C6C5C7' },
 						400: { value: '#ADACAE' },

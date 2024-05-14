@@ -63,7 +63,7 @@ export default function Page() {
 				</h4>
 				<ul className={listClass}>
 					<li>
-						<Link href='' className={itemClass}>
+						<Link href='/posts/slugggggg' className={itemClass}>
 							<p className={postTitleClass}>
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 							</p>
