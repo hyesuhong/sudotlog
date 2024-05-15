@@ -5,6 +5,5 @@
   "tabWidth": 2,
   "useTabs": true,
   "endOfLine": "lf",
-  "proseWrap": "always",
-  "plugins": ["prettier-plugin-tailwindcss"]
+  "proseWrap": "always"
 }

@@ -1,7 +1,18 @@
+import { mainLinkTitle, mainLinkVariants, pageLayout } from '@/styles';
+import Link from 'next/link';
+
 export default function Home() {
 	return (
-		<main className='flex min-h-screen flex-col items-center justify-between p-24'>
-			<p>main</p>
+		<main className={pageLayout({ isMain: true })}>
+			<h1 className={mainLinkTitle}>
+				<Link href='/about' className={mainLinkVariants({ kind: 'about' })}>
+					Su
+				</Link>
+				<span>.</span>
+				<Link href='/posts' className={mainLinkVariants({ kind: 'blog' })}>
+					log
+				</Link>
+			</h1>
 		</main>
 	);
 }

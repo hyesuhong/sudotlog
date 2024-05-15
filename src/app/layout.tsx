@@ -1,4 +1,7 @@
-import { pretendard } from '@/utils/font';
+import { Footer } from '@/components/footer';
+import { Header } from '@/components/header';
+import { rootClassName } from '@/styles';
+import { jetBrainsMono, pretendard } from '@/utils/font';
 import type { Metadata } from 'next';
 import './globals.css';
 
@@ -13,8 +16,15 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang='en' className={`${pretendard.variable} font-sans`}>
-			<body>{children}</body>
+		<html
+			lang='en'
+			className={`${pretendard.variable} ${jetBrainsMono.variable} ${rootClassName}`}
+		>
+			<body>
+				<Header />
+				{children}
+				<Footer />
+			</body>
 		</html>
 	);
 }
