@@ -1,7 +1,7 @@
 import { css, cva } from 'styled-system/css';
 
 export const maxWidthRaw = css.raw({
-	maxW: '5xl',
+	maxW: '3xl',
 	mx: 'auto',
 	px: 6,
 });
@@ -9,9 +9,10 @@ export const maxWidthRaw = css.raw({
 export const pageLayout = cva({
 	base: {
 		minH: 'calc(100vh - 2.5rem)',
-		maxW: '5xl',
+		maxW: '3xl',
 		mx: 'auto',
 		px: 6,
+		position: 'relative',
 	},
 	variants: {
 		isMain: {

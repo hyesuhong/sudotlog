@@ -75,3 +75,38 @@ export const themeSwitchClassName = css(
 		},
 	}
 );
+
+export const tocWrapperClassName = css({
+	display: 'none',
+	xl: {
+		display: 'block',
+		position: 'absolute',
+		top: 0,
+		left: '100%',
+		w: '14.5rem',
+		height: 'full',
+	},
+});
+
+export const tocStickyWrapperClassName = css({
+	position: 'sticky',
+	mt: '22.375rem',
+	top: '7.5rem',
+});
+
+export const tocListClassName = css({
+	p: 4,
+	mb: 4,
+	maxH: 'calc(100vh - 11.25rem )',
+	borderBottom: '1px solid {colors.neutral.100}',
+});
+
+export const tocTopButtonClassName = css({
+	w: 7,
+	h: 7,
+	cursor: 'pointer',
+	'& > svg': {
+		w: 'full',
+		h: 'full',
+	},
+});

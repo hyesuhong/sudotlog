@@ -1,4 +1,5 @@
 import { IcoArrowLeft } from '@/assets/icons';
+import { TableOfContents } from '@/components/table-of-contents';
 import {
 	backLinkStyle,
 	postContentCode,
@@ -19,6 +20,7 @@ import Link from 'next/link';
 export default function Post() {
 	return (
 		<>
+			<TableOfContents />
 			<section className={postInfoLayout}>
 				<Link href='' className={backLinkStyle}>
 					<IcoArrowLeft />
