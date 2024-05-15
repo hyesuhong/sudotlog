@@ -1,5 +1,4 @@
 import { css, cva } from 'styled-system/css';
-import { iconSizeVariants } from './icon';
 
 export const mainLinkTitle = css({ textStyle: 'pageTitle' });
 
@@ -128,7 +127,11 @@ export const backLinkStyle = css({
 	_hover: {
 		opacity: 1,
 	},
-	'& > svg': iconSizeVariants.raw({ size: 'small' }),
+	// '& > svg': iconSizeVariants.raw({ size: 'small' }),
+	'& > svg': {
+		w: 7,
+		h: 7,
+	},
 });
 
 export const postInfoTitle = css({

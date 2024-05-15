@@ -1,5 +1,4 @@
 import { css } from 'styled-system/css';
-import { iconSizeVariants } from './icon';
 import { maxWidthRaw } from './layout';
 
 export const headerElClassName = css(maxWidthRaw, {
@@ -11,6 +10,7 @@ export const headerElClassName = css(maxWidthRaw, {
 	h: '3.5rem',
 	display: 'flex',
 	alignItems: 'center',
+	zIndex: 10,
 });
 
 export const headerLogoClassName = css({
@@ -44,11 +44,18 @@ export const footerLinkItemClassName = css({
 	_hover: {
 		opacity: 1,
 	},
-	'& > svg': iconSizeVariants.raw({ size: 'small' }),
+	// '& > svg': iconSizeVariants.raw({ size: 'small' }),
+	'& > svg': {
+		w: 7,
+		h: 7,
+	},
 });
 
 export const themeSwitchClassName = css(
-	iconSizeVariants.raw({ size: 'small' }),
+	{
+		w: 7,
+		h: 7,
+	},
 	{
 		overflow: 'hidden',
 		opacity: 0.6,
