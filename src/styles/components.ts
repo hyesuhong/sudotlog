@@ -1,4 +1,4 @@
-import { css } from 'styled-system/css';
+import { css, cva } from 'styled-system/css';
 import { maxWidthRaw } from './layout';
 
 export const headerElClassName = css(maxWidthRaw, {
@@ -17,7 +17,7 @@ export const headerLogoClassName = css({
 	textStyle: 'headerLogo',
 	transition: 'color 0.2s ease-in',
 	_hover: {
-		color: 'violet.400',
+		color: 'primary',
 	},
 });
 
@@ -64,17 +64,32 @@ export const themeSwitchClassName = css(
 		_hover: {
 			opacity: 1,
 		},
-		'& > span': {
-			display: 'flex',
-			w: '200%',
-			h: 'full',
-		},
+	}
+);
+
+export const themeSwitchIconsWrapper = cva({
+	base: {
+		display: 'flex',
+		w: '200%',
+		h: 'full',
+		transform: 'translateX(var(--translate-x))',
+		transition: 'transform 0.2s ease-in',
 		'& svg': {
 			flex: 1,
 			h: 'full',
 		},
-	}
-);
+	},
+	variants: {
+		theme: {
+			light: {
+				translateX: '0',
+			},
+			dark: {
+				translateX: '-50%',
+			},
+		},
+	},
+});
 
 export const tocWrapperClassName = css({
 	display: 'none',
@@ -98,7 +113,7 @@ export const tocListClassName = css({
 	p: 4,
 	mb: 4,
 	maxH: 'calc(100vh - 11.25rem )',
-	borderBottom: '1px solid {colors.neutral.100}',
+	borderBottom: '1px solid {colors.muted}',
 });
 
 export const tocTopButtonClassName = css({

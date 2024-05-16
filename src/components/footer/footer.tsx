@@ -1,7 +1,7 @@
 import { IcoGithub, IcoLinkedin, IcoMail } from '@/assets/icons';
 import { copyrightClassName, footerElClassName } from '@/styles';
+import { ThemeSwitch } from '../theme';
 import FooterNav from './footerNav';
-import ThemeSwitch from './themeSwitch';
 
 const footerNavItems = [
 	{ path: 'mailto:honghs95@gmail.com', icon: <IcoMail /> },

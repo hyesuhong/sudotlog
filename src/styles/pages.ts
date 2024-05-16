@@ -7,7 +7,7 @@ export const mainLinkVariants = cva({
 		position: 'relative',
 		transition: 'color 0.2s ease-in',
 		_hover: {
-			color: 'violet.400',
+			color: 'primary',
 			_before: {
 				opacity: 1,
 			},
@@ -16,7 +16,7 @@ export const mainLinkVariants = cva({
 			position: 'absolute',
 			left: 0,
 			textStyle: 'paragraph',
-			color: 'neutral.500',
+			color: 'grey',
 			md: {
 				opacity: 0,
 				pointerEvents: 'none',
@@ -63,7 +63,7 @@ export const postListLayout = css({
 	gridAutoRows: '2.25rem',
 	rowGap: 2,
 	pl: 4,
-	borderLeft: '1px solid {colors.neutral.100}',
+	borderLeft: '1px solid {colors.muted}',
 });
 
 export const postItemLayout = css({
@@ -86,7 +86,7 @@ export const postLinkLayout = css({
 	md: {
 		transition: 'background-color 0.2s ease-in',
 		_hover: {
-			bg: 'violet.50',
+			bg: 'secondary',
 		},
 	},
 });
@@ -100,7 +100,7 @@ export const postListTitle = css({
 export const postInfoLayout = css({
 	pt: 4,
 	pb: 10,
-	borderBottom: '1px solid {colors.neutral.100}',
+	borderBottom: '1px solid {colors.muted}',
 });
 
 export const postContentLayout = css({
@@ -112,7 +112,7 @@ export const postContentLayout = css({
 		fontStyle: 'italic',
 	},
 	'& :is(s, del, strike)': {
-		color: 'neutral.500',
+		color: 'grey',
 		textDecoration: 'line-through',
 	},
 });
@@ -121,7 +121,7 @@ export const backLinkStyle = css({
 	display: 'flex',
 	alignItems: 'center',
 	textStyle: 'caption',
-	color: 'neutral.500',
+	color: 'grey',
 	opacity: 0.7,
 	transition: 'opacity 0.2s ease-in',
 	_hover: {
@@ -142,7 +142,7 @@ export const postInfoTitle = css({
 
 export const postInfoDate = css({
 	textStyle: 'caption',
-	color: 'neutral.500',
+	color: 'grey',
 });
 
 const postContentMarginBase = css.raw({
@@ -183,7 +183,7 @@ const postContentList = cva({
 		textStyle: 'paragraph',
 		paddingInlineStart: 5,
 		'& ::marker': {
-			color: 'neutral.500',
+			color: 'grey',
 		},
 		'& :is(ul)': {
 			listStyle: 'circle',
@@ -224,7 +224,7 @@ export const postContentLink = cva({
 	base: {
 		position: 'relative',
 		textDecorationLine: 'underline',
-		textDecorationColor: 'neutral.500',
+		textDecorationColor: 'grey',
 		textDecorationThickness: '1px',
 		textUnderlineOffset: '4px',
 	},
@@ -237,13 +237,13 @@ export const postContentLink = cva({
 
 export const postContentQuote = css(postContentMarginBase, {
 	paddingInlineStart: 4,
-	borderLeft: '2px solid {colors.neutral.200}',
+	borderLeft: '2px solid {colors.muted}',
 });
 
 export const postContentCode = cva({
 	base: {
 		fontFamily: 'jetBrainsMono',
-		bg: 'neutral.100',
+		bg: 'muted',
 	},
 	variants: {
 		kind: {
@@ -270,6 +270,6 @@ export const postContentFigure = css(postContentMarginBase, {
 	},
 	'& figcaption': {
 		textStyle: 'caption',
-		color: 'neutral.500',
+		color: 'grey',
 	},
 });
