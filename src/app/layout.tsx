@@ -1,5 +1,6 @@
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
+import Provider from '@/components/theme/provider';
 import { rootClassName } from '@/styles';
 import { jetBrainsMono, pretendard } from '@/utils/font';
 import type { Metadata } from 'next';
@@ -21,9 +22,11 @@ export default function RootLayout({
 			className={`${pretendard.variable} ${jetBrainsMono.variable} ${rootClassName}`}
 		>
 			<body>
-				<Header />
-				{children}
-				<Footer />
+				<Provider>
+					<Header />
+					{children}
+					<Footer />
+				</Provider>
 			</body>
 		</html>
 	);
