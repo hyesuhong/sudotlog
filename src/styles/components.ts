@@ -17,7 +17,7 @@ export const headerLogoClassName = css({
 	textStyle: 'headerLogo',
 	transition: 'color 0.2s ease-in',
 	_hover: {
-		color: 'violet.400',
+		color: 'primary',
 	},
 });
 
@@ -113,7 +113,7 @@ export const tocListClassName = css({
 	p: 4,
 	mb: 4,
 	maxH: 'calc(100vh - 11.25rem )',
-	borderBottom: '1px solid {colors.neutral.100}',
+	borderBottom: '1px solid {colors.muted}',
 });
 
 export const tocTopButtonClassName = css({

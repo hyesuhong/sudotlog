@@ -15,6 +15,11 @@ export default defineConfig({
 	// Files to exclude
 	exclude: [],
 
+	conditions: {
+		light: '[data-theme=light] &',
+		dark: '[data-theme=dark] &',
+	},
+
 	// Useful for theme customization
 	theme: {
 		extend: {
@@ -50,6 +55,44 @@ export default defineConfig({
 						700: { value: '#61568C' },
 						800: { value: '#40395E' },
 						900: { value: '#100E17' },
+					},
+				},
+			},
+			semanticTokens: {
+				colors: {
+					background: {
+						value: {
+							_light: '{colors.neutral.50}',
+							_dark: '{colors.neutral.900}',
+						},
+					},
+					text: {
+						value: {
+							_light: '{colors.neutral.800}',
+							_dark: '{colors.neutral.100}',
+						},
+					},
+					primary: {
+						value: {
+							base: '{colors.violet.400}',
+						},
+					},
+					secondary: {
+						value: {
+							_light: '{colors.violet.50}',
+							_dark: '{colors.violet.800}',
+						},
+					},
+					grey: {
+						value: {
+							base: '{colors.neutral.500}',
+						},
+					},
+					muted: {
+						value: {
+							_light: '{colors.neutral.100}',
+							_dark: '{colors.neutral.700}',
+						},
 					},
 				},
 			},
