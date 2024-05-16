@@ -20,6 +20,12 @@ export default defineConfig({
 		dark: '[data-theme=dark] &',
 	},
 
+	globalCss: {
+		'::selection': {
+			backgroundColor: 'grey/80',
+		},
+	},
+
 	// Useful for theme customization
 	theme: {
 		extend: {
@@ -79,7 +85,7 @@ export default defineConfig({
 					},
 					secondary: {
 						value: {
-							_light: '{colors.violet.50}',
+							_light: '{colors.violet.100}',
 							_dark: '{colors.violet.800}',
 						},
 					},
