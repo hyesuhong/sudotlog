@@ -58,8 +58,6 @@ export const ThemeProvider = ({
 			return;
 		}
 
-		console.log(themeValue);
-
 		const docEl = document.documentElement;
 		docEl.setAttribute(ATTRIBUTE, themeValue);
 	}, []);

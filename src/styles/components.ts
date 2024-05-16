@@ -1,4 +1,4 @@
-import { css } from 'styled-system/css';
+import { css, cva } from 'styled-system/css';
 import { maxWidthRaw } from './layout';
 
 export const headerElClassName = css(maxWidthRaw, {
@@ -64,17 +64,32 @@ export const themeSwitchClassName = css(
 		_hover: {
 			opacity: 1,
 		},
-		'& > span': {
-			display: 'flex',
-			w: '200%',
-			h: 'full',
-		},
+	}
+);
+
+export const themeSwitchIconsWrapper = cva({
+	base: {
+		display: 'flex',
+		w: '200%',
+		h: 'full',
+		transform: 'translateX(var(--translate-x))',
+		transition: 'transform 0.2s ease-in',
 		'& svg': {
 			flex: 1,
 			h: 'full',
 		},
-	}
-);
+	},
+	variants: {
+		theme: {
+			light: {
+				translateX: '0',
+			},
+			dark: {
+				translateX: '-50%',
+			},
+		},
+	},
+});
 
 export const tocWrapperClassName = css({
 	display: 'none',
