@@ -3,15 +3,25 @@ import matter from 'gray-matter';
 import { join } from 'path';
 import { cwd } from 'process';
 
-type AllPostsReturnsOnlyMatter = {
-	slug: string;
-	data: { [key: string]: any };
+type PostFrontMatter = {
+	title: string;
+	description?: string;
+	date: Date;
+	tags?: string[];
 };
-type AllPostsReturnsFull = {
-	slug: string;
-} & matter.GrayMatterFile<string>;
 
-type AllPostsReturns = AllPostsReturnsFull | AllPostsReturnsOnlyMatter;
+type PostsReturnNoContent = {
+	data: PostFrontMatter;
+};
+
+interface PostReturnFull extends matter.GrayMatterFile<string> {
+	data: PostFrontMatter;
+}
+
+type AllPostsReturns = { slug: string } & (
+	| PostsReturnNoContent
+	| PostReturnFull
+);
 
 const TARGET_DIR = join(cwd(), 'src', 'contents', 'posts');
 
@@ -82,11 +92,13 @@ async function _getPostBySlug(
 
 	const contents = await fs.readFile(path, 'utf-8');
 
-	const d = matter(contents);
+	const origin = matter(contents);
+	const frontmatter = origin.data as PostFrontMatter;
+	const returnData = { ...origin, data: frontmatter };
 
 	if (options && options.onlyFrontMatter) {
-		return { slug: onlySlug, data: d.data };
+		return { slug: onlySlug, data: frontmatter };
 	}
 
-	return { slug: onlySlug, ...d };
+	return { slug: onlySlug, ...returnData };
 }
