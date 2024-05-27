@@ -76,6 +76,12 @@ export async function getAllPostInfoGroupByDate() {
 	return grouppedInfo;
 }
 
+export async function getPostBySlug(slug: string) {
+	const post = _getPostBySlug(slug);
+
+	return post;
+}
+
 async function _getAllPostSlugs() {
 	const dirArr = await fs.readdir(TARGET_DIR);
 	const onlyMdFiles = dirArr.filter((file) => file.match(/\.mdx*/));
@@ -87,18 +93,45 @@ async function _getPostBySlug(
 	slug: string,
 	options?: { onlyFrontMatter: boolean }
 ) {
-	const path = join(TARGET_DIR, slug);
+	let path = join(TARGET_DIR, slug);
 	const onlySlug = slug.replace(/\.mdx*/, '');
+
+	const isFileName = slug.match(/\.mdx*/);
+
+	if (!isFileName) {
+		const mdxPath = path + '.mdx';
+		const mdPath = path + '.md';
+
+		const isMdx = await _isExistPath(mdxPath);
+		if (isMdx) {
+			path = mdxPath;
+		}
+
+		const isMd = await _isExistPath(mdPath);
+		if (isMd) {
+			path = mdPath;
+		}
+	}
 
 	const contents = await fs.readFile(path, 'utf-8');
 
 	const origin = matter(contents);
 	const frontmatter = origin.data as PostFrontMatter;
-	const returnData = { ...origin, data: frontmatter };
+	const returnData = { content: origin.content, data: frontmatter };
 
 	if (options && options.onlyFrontMatter) {
 		return { slug: onlySlug, data: frontmatter };
 	}
 
 	return { slug: onlySlug, ...returnData };
+}
+
+async function _isExistPath(path: string) {
+	try {
+		await fs.access(path);
+		return true;
+	} catch (e) {
+		console.log(e);
+		return false;
+	}
 }
