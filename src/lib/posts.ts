@@ -10,18 +10,11 @@ type PostFrontMatter = {
 	tags?: string[];
 };
 
-type PostsReturnNoContent = {
+type AllPostsReturns = {
+	slug: string;
 	data: PostFrontMatter;
+	content?: string;
 };
-
-interface PostReturnFull extends matter.GrayMatterFile<string> {
-	data: PostFrontMatter;
-}
-
-type AllPostsReturns = { slug: string } & (
-	| PostsReturnNoContent
-	| PostReturnFull
-);
 
 const TARGET_DIR = join(cwd(), 'src', 'contents', 'posts');
 
@@ -46,38 +39,14 @@ export async function getAllPostInfoGroupByDate() {
 		slugs.map((slug) => _getPostBySlug(slug, { onlyFrontMatter: true }))
 	);
 
-	const sortedInfo = info.toSorted((a, b) => {
-		const aDate = a.data.date;
-		const bDate = b.data.date;
+	const sortedInfo = _sortByDate(info);
+	const groupedInfo = _groupByDate(sortedInfo);
 
-		if (aDate > bDate) {
-			return -1;
-		}
-		if (aDate < bDate) {
-			return 1;
-		}
-		return 0;
-	});
-
-	const grouppedInfo = sortedInfo.reduce<Record<number, AllPostsReturns[]>>(
-		(acc, cur) => {
-			const createdYear = cur.data.date.getFullYear();
-			if (typeof acc[createdYear] === 'undefined') {
-				acc[createdYear] = [];
-			}
-
-			acc[createdYear].push(cur);
-
-			return acc;
-		},
-		{}
-	);
-
-	return grouppedInfo;
+	return groupedInfo;
 }
 
 export async function getPostBySlug(slug: string) {
-	const post = _getPostBySlug(slug);
+	const post = await _getPostBySlug(slug);
 
 	return post;
 }
@@ -93,25 +62,8 @@ async function _getPostBySlug(
 	slug: string,
 	options?: { onlyFrontMatter: boolean }
 ) {
-	let path = join(TARGET_DIR, slug);
 	const onlySlug = slug.replace(/\.mdx*/, '');
-
-	const isFileName = slug.match(/\.mdx*/);
-
-	if (!isFileName) {
-		const mdxPath = path + '.mdx';
-		const mdPath = path + '.md';
-
-		const isMdx = await _isExistPath(mdxPath);
-		if (isMdx) {
-			path = mdxPath;
-		}
-
-		const isMd = await _isExistPath(mdPath);
-		if (isMd) {
-			path = mdPath;
-		}
-	}
+	const path = await _getFilePath(onlySlug);
 
 	const contents = await fs.readFile(path, 'utf-8');
 
@@ -120,7 +72,7 @@ async function _getPostBySlug(
 	const returnData = { content: origin.content, data: frontmatter };
 
 	if (options && options.onlyFrontMatter) {
-		return { slug: onlySlug, data: frontmatter };
+		return { slug: onlySlug, data: frontmatter, content: undefined };
 	}
 
 	return { slug: onlySlug, ...returnData };
@@ -131,7 +83,61 @@ async function _isExistPath(path: string) {
 		await fs.access(path);
 		return true;
 	} catch (e) {
-		console.log(e);
 		return false;
 	}
+}
+
+async function _getFilePath(slug: string) {
+	const basePath = join(TARGET_DIR, slug);
+
+	const mdxPath = basePath + '.mdx';
+	const mdPath = basePath + '.md';
+
+	const isMdx = await _isExistPath(mdxPath);
+	if (isMdx) {
+		return mdxPath;
+	}
+
+	const isMd = await _isExistPath(mdPath);
+	if (isMd) {
+		return mdPath;
+	}
+
+	return basePath;
+}
+
+type OrderBy = 'ASC' | 'DESC';
+
+function _sortByDate(data: AllPostsReturns[], orderBy: OrderBy = 'DESC') {
+	const sortedData = data.toSorted((a, b) => {
+		const aDate = a.data.date;
+		const bDate = b.data.date;
+
+		if (orderBy === 'DESC') {
+			return aDate > bDate ? -1 : aDate < bDate ? 1 : 0;
+		}
+
+		return aDate < bDate ? -1 : aDate > bDate ? 1 : 0;
+	});
+
+	return sortedData;
+}
+
+function _groupByDate(data: AllPostsReturns[]) {
+	const groupedData = data.reduce<Record<string, AllPostsReturns[]>>(
+		(acc, cur) => {
+			const createdYear = cur.data.date.getFullYear();
+
+			if (typeof acc[createdYear] === 'undefined') {
+				acc[createdYear] = [];
+			}
+
+			acc[createdYear].push(cur);
+
+			return acc;
+		},
+		{}
+	);
+
+	return groupedData;
 }
