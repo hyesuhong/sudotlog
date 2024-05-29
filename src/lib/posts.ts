@@ -1,5 +1,6 @@
 import fs from 'fs/promises';
 import matter from 'gray-matter';
+import { notFound } from 'next/navigation';
 import { join } from 'path';
 import { cwd } from 'process';
 
@@ -103,7 +104,7 @@ async function _getFilePath(slug: string) {
 		return mdPath;
 	}
 
-	return basePath;
+	return notFound();
 }
 
 type OrderBy = 'ASC' | 'DESC';

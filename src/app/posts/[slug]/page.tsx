@@ -22,11 +22,11 @@ interface PostPageParams {
 export default async function Post({ params: { slug } }: PostPageParams) {
 	const post = await getPostBySlug(slug);
 
-	return 'content' in post ? (
+	return (
 		<>
 			<TableOfContents />
 			<section className={postInfoLayout}>
-				<Link href='' className={backLinkStyle}>
+				<Link href='javascript:history.back()' className={backLinkStyle}>
 					<IcoArrowLeft />
 					Back to list
 				</Link>
@@ -35,12 +35,12 @@ export default async function Post({ params: { slug } }: PostPageParams) {
 					{convertDateToString(post.data.date, 'YYYY.MM.DD')}
 				</p>
 			</section>
-			<section className={postContentLayout}>
-				{/* TODO: add md format reader */}
-				{post.content}
-			</section>
+			{post.content && (
+				<section className={postContentLayout}>
+					{/* TODO: add md format reader */}
+					{post.content}
+				</section>
+			)}
 		</>
-	) : (
-		<p>Not found</p>
 	);
 }
