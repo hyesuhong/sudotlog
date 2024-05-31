@@ -1,4 +1,5 @@
 import { IcoArrowLeft } from '@/assets/icons';
+import MdView from '@/components/post/mdView';
 import { TableOfContents } from '@/components/table-of-contents';
 import { convertDateToString } from '@/lib/date';
 import { getPostBySlug } from '@/lib/posts';
@@ -26,7 +27,7 @@ export default async function Post({ params: { slug } }: PostPageParams) {
 		<>
 			<TableOfContents />
 			<section className={postInfoLayout}>
-				<Link href='javascript:history.back()' className={backLinkStyle}>
+				<Link href='' className={backLinkStyle}>
 					<IcoArrowLeft />
 					Back to list
 				</Link>
@@ -37,8 +38,7 @@ export default async function Post({ params: { slug } }: PostPageParams) {
 			</section>
 			{post.content && (
 				<section className={postContentLayout}>
-					{/* TODO: add md format reader */}
-					{post.content}
+					<MdView content={post.content} />
 				</section>
 			)}
 		</>

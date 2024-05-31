@@ -106,7 +106,7 @@ export const postInfoLayout = css({
 export const postContentLayout = css({
 	pt: 20,
 	'& :is(strong, b)': {
-		fontWeight: 700,
+		fontWeight: 500,
 	},
 	'& :is(em, i)': {
 		fontStyle: 'italic',
@@ -146,7 +146,7 @@ export const postInfoDate = css({
 });
 
 const postContentMarginBase = css.raw({
-	my: 5,
+	my: 8,
 });
 
 export const postContentHeadings = cva({
@@ -180,6 +180,9 @@ export const postContentPara = css(postContentMarginBase, {
 
 const postContentList = cva({
 	base: {
+		display: 'flex',
+		flexDir: 'column',
+		rowGap: 2,
 		textStyle: 'paragraph',
 		paddingInlineStart: 5,
 		'& ::marker': {
@@ -187,12 +190,14 @@ const postContentList = cva({
 		},
 		'& :is(ul)': {
 			listStyle: 'circle',
+			my: 2,
 			'& :is(ul)': {
 				listStyle: 'square',
 			},
 		},
 		'& :is(ol)': {
 			listStyle: 'lower-alpha',
+			my: 2,
 			'& :is(ol)': {
 				listStyle: 'lower-roman',
 			},
@@ -215,7 +220,7 @@ export const postContentOrderd = css(
 	postContentList.raw({ kind: 'orderd' })
 );
 
-export const postContentunOrderd = css(
+export const postContentUnorderd = css(
 	postContentMarginBase,
 	postContentList.raw({ kind: 'unorderd' })
 );
@@ -271,5 +276,35 @@ export const postContentFigure = css(postContentMarginBase, {
 	'& figcaption': {
 		textStyle: 'caption',
 		color: 'grey',
+	},
+});
+
+export const postContentTable = css(postContentMarginBase, {
+	'& tbody tr': {
+		_even: {
+			bg: 'muted/60',
+		},
+	},
+});
+
+export const postContentTh = css({
+	p: 2,
+	borderBottom: '1px solid {colors.muted}',
+	fontWeight: 500,
+});
+
+export const postContentTd = cva({
+	base: {
+		p: 2,
+	},
+	variants: {
+		align: {
+			right: {
+				textAlign: 'right',
+			},
+			center: {
+				textAlign: 'center',
+			},
+		},
 	},
 });
