@@ -9,6 +9,7 @@ import {
 	postInfoLayout,
 	postInfoTitle,
 } from '@/styles';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
 
 interface PostPageParams {
@@ -37,8 +38,7 @@ export default async function Post({ params: { slug } }: PostPageParams) {
 			</section>
 			{post.content && (
 				<section className={postContentLayout}>
-					{/* TODO: add md format reader */}
-					{post.content}
+					<MDXRemote source={post.content} />
 				</section>
 			)}
 		</>
