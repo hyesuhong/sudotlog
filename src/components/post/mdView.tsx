@@ -10,6 +10,7 @@ import Markdown from 'react-markdown';
 import rehypeRaw from 'rehype-raw';
 import remarkGfm from 'remark-gfm';
 import { Heading, Text } from '../common';
+import Code from './code';
 
 type Props = {
 	content: string;
@@ -51,6 +52,17 @@ export default function MdView({ content }: Props) {
 				figure: ({ children }) => (
 					<figure className={postContentFigure}>{children}</figure>
 				),
+				pre: ({ children }) => <>{children}</>,
+				code: ({ children, className }) => {
+					const languageMatch = /language-(\w+)/.exec(className || '');
+					// console.log(languageMatch);
+					return (
+						<Code
+							code={children?.toString() || ''}
+							language={languageMatch ? languageMatch[1] : undefined}
+						/>
+					);
+				},
 			}}
 		>
 			{content}

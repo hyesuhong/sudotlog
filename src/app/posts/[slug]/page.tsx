@@ -1,5 +1,5 @@
 import { IcoArrowLeft } from '@/assets/icons';
-import MdView from '@/components/post/mdView';
+import { MdView } from '@/components/post';
 import { TableOfContents } from '@/components/table-of-contents';
 import { convertDateToString } from '@/lib/date';
 import { getPostBySlug } from '@/lib/posts';
