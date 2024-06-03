@@ -1,4 +1,5 @@
 import { IcoArrowLeft } from '@/assets/icons';
+import { MdxRemote } from '@/components/post';
 import { TableOfContents } from '@/components/table-of-contents';
 import { convertDateToString } from '@/lib/date';
 import { getPostBySlug } from '@/lib/posts';
@@ -9,10 +10,7 @@ import {
 	postInfoLayout,
 	postInfoTitle,
 } from '@/styles';
-import { MDXRemote } from 'next-mdx-remote/rsc';
 import Link from 'next/link';
-import rehypePrettyCode from 'rehype-pretty-code';
-import remarkGfm from 'remark-gfm';
 
 interface PostPageParams {
 	params: {
@@ -40,22 +38,7 @@ export default async function Post({ params: { slug } }: PostPageParams) {
 			</section>
 			{content && (
 				<section className={postContentLayout}>
-					<MDXRemote
-						source={content}
-						options={{
-							mdxOptions: {
-								remarkPlugins: [remarkGfm],
-								rehypePlugins: [
-									[
-										rehypePrettyCode,
-										{
-											theme: 'nord',
-										},
-									],
-								],
-							},
-						}}
-					/>
+					<MdxRemote source={content} />
 				</section>
 			)}
 		</>
