@@ -115,6 +115,26 @@ export const postContentLayout = css({
 		color: 'grey',
 		textDecoration: 'line-through',
 	},
+	'& code': {
+		fontFamily: 'jetBrainsMono',
+	},
+	'& [data-rehype-pretty-code-figure]': {
+		fontSize: '0.875rem',
+	},
+	'& [data-rehype-pretty-code-figure]:is(span)': {
+		py: 0.5,
+		px: 1,
+		bg: 'grey/20',
+	},
+	'& [data-rehype-pretty-code-figure]:is(figure)': {
+		my: 8,
+	},
+	'& [data-rehype-pretty-code-figure] pre': {
+		px: 4,
+		py: 2,
+		bg: 'grey/20',
+		overflowX: 'auto',
+	},
 });
 
 export const backLinkStyle = css({
@@ -255,25 +275,6 @@ export const postContentQuote = css(postContentMarginBase, {
 	},
 });
 
-export const postContentCode = cva({
-	base: {
-		fontFamily: 'jetBrainsMono',
-		bg: 'muted',
-	},
-	variants: {
-		kind: {
-			inline: {
-				py: 0.5,
-				px: 1,
-			},
-			block: {
-				p: 4,
-				whiteSpace: 'break-spaces',
-			},
-		},
-	},
-});
-
 export const postContentFigure = css(postContentMarginBase, {
 	position: 'relative',
 	display: 'flex',
@@ -292,6 +293,7 @@ export const postContentFigure = css(postContentMarginBase, {
 });
 
 export const postContentTable = css(postContentMarginBase, {
+	w: 'full',
 	'& tbody tr': {
 		_even: {
 			bg: 'muted/60',

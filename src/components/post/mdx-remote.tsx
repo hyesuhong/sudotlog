@@ -1,3 +1,5 @@
+import plainDarkTheme from '@/styles/syntax/plain-dark-theme.json';
+import plainLightTheme from '@/styles/syntax/plain-light-theme.json';
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
 import { Suspense } from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
@@ -5,24 +7,15 @@ import rehypeExternalLinks from 'rehype-external-links';
 import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
-import {
-	Heading,
-	HrLine,
-	Image,
-	Link,
-	List,
-	Quote,
-	Table,
-	Td,
-	Text,
-	Th,
-} from './elements';
+import remarkUnwrapImages from 'remark-unwrap-images';
+import * as E from './elements';
 
 type Props = Pick<MDXRemoteProps, 'source'>;
 
 const options: MDXRemoteProps['options'] = {
 	mdxOptions: {
-		remarkPlugins: [remarkGfm],
+		format: 'mdx',
+		remarkPlugins: [remarkGfm, remarkUnwrapImages],
 		rehypePlugins: [
 			rehypeSlug,
 			[
@@ -51,7 +44,11 @@ const options: MDXRemoteProps['options'] = {
 						block: 'plaintext',
 						inline: 'plaintext',
 					},
-					theme: 'nord',
+					theme: {
+						dark: plainDarkTheme,
+						light: plainLightTheme,
+					},
+					keepBackground: false,
 				},
 			],
 		],
@@ -60,47 +57,49 @@ const options: MDXRemoteProps['options'] = {
 
 const components: MDXRemoteProps['components'] = {
 	h1: ({ children, ...props }) => (
-		<Heading type='h1' {...props}>
+		<E.Heading type='h1' {...props}>
 			{children}
-		</Heading>
+		</E.Heading>
 	),
 	h2: ({ children, ...props }) => (
-		<Heading type='h2' {...props}>
+		<E.Heading type='h2' {...props}>
 			{children}
-		</Heading>
+		</E.Heading>
 	),
 	h3: ({ children, ...props }) => (
-		<Heading type='h3' {...props}>
+		<E.Heading type='h3' {...props}>
 			{children}
-		</Heading>
+		</E.Heading>
 	),
 	h4: ({ children, ...props }) => (
-		<Heading type='h4' {...props}>
+		<E.Heading type='h4' {...props}>
 			{children}
-		</Heading>
+		</E.Heading>
 	),
 	h5: ({ children, ...props }) => (
-		<Heading type='h5' {...props}>
+		<E.Heading type='h5' {...props}>
 			{children}
-		</Heading>
+		</E.Heading>
 	),
 	h6: ({ children, ...props }) => (
-		<Heading type='h6' {...props}>
+		<E.Heading type='h6' {...props}>
 			{children}
-		</Heading>
+		</E.Heading>
 	),
-	p: ({ children }) => <Text>{children}</Text>,
-	ul: ({ children }) => <List type='unordered'>{children}</List>,
-	ol: ({ children }) => <List type='ordered'>{children}</List>,
-	table: ({ children }) => <Table>{children}</Table>,
-	th: ({ children }) => <Th>{children}</Th>,
-	td: ({ children, style }) => {
-		return <Td textAlign={style?.textAlign}>{children}</Td>;
+	p: ({ children }) => {
+		return <E.Text>{children}</E.Text>;
 	},
-	img: ({ src, alt }) => <Image src={src} alt={alt} />,
-	a: (props) => <Link {...props} />,
-	blockquote: ({ children }) => <Quote>{children}</Quote>,
-	hr: () => <HrLine />,
+	ul: ({ children }) => <E.List type='unordered'>{children}</E.List>,
+	ol: ({ children }) => <E.List type='ordered'>{children}</E.List>,
+	table: ({ children }) => <E.Table>{children}</E.Table>,
+	th: ({ children }) => <E.Th>{children}</E.Th>,
+	td: ({ children, style }) => {
+		return <E.Td textAlign={style?.textAlign}>{children}</E.Td>;
+	},
+	img: ({ src, alt }) => <E.Image src={src} alt={alt} />,
+	a: (props) => <E.Link {...props} />,
+	blockquote: ({ children }) => <E.Quote>{children}</E.Quote>,
+	hr: () => <E.HrLine />,
 };
 
 export default function MdxRemote(props: Props) {
