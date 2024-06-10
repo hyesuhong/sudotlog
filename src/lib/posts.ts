@@ -17,6 +17,11 @@ type AllPostsReturns = {
 	content?: string;
 };
 
+type GroupedPostsByYear = {
+	year: number;
+	posts: AllPostsReturns[];
+};
+
 const TARGET_DIR = join(cwd(), 'src', 'contents', 'posts');
 
 export async function getAllPostInfo() {
@@ -33,7 +38,7 @@ export async function getAllPostInfoGroupByDate() {
 	const slugs = await _getAllPostSlugs();
 
 	if (slugs.length < 1) {
-		return {};
+		return [];
 	}
 
 	const info = await Promise.all(
@@ -125,20 +130,21 @@ function _sortByDate(data: AllPostsReturns[], orderBy: OrderBy = 'DESC') {
 }
 
 function _groupByDate(data: AllPostsReturns[]) {
-	const groupedData = data.reduce<Record<string, AllPostsReturns[]>>(
-		(acc, cur) => {
-			const createdYear = cur.data.date.getFullYear();
+	const groupedData = data.reduce<GroupedPostsByYear[]>((acc, cur) => {
+		const createdYear = cur.data.date.getFullYear();
+		const isExist = acc.find((a) => a.year === createdYear);
 
-			if (typeof acc[createdYear] === 'undefined') {
-				acc[createdYear] = [];
-			}
+		if (!isExist) {
+			const newYear = { year: createdYear, posts: [] };
+			acc.push(newYear);
+		}
 
-			acc[createdYear].push(cur);
+		const yearIndex = acc.findIndex((a) => a.year === createdYear);
 
-			return acc;
-		},
-		{}
-	);
+		acc[yearIndex].posts.push(cur);
+
+		return acc;
+	}, []);
 
 	return groupedData;
 }
