@@ -5,4 +5,5 @@ export const rootClassName = css({
 	bg: 'background',
 	color: 'text',
 	transition: 'background 0.2s ease-in',
+	scrollBehavior: 'smooth',
 });

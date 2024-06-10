@@ -175,6 +175,7 @@ export const postContentHeadings = cva({
 		_first: {
 			mt: 0,
 		},
+		scrollMargin: '4rem',
 	},
 	variants: {
 		kind: {
