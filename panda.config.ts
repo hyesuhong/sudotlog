@@ -24,6 +24,12 @@ export default defineConfig({
 		'::selection': {
 			backgroundColor: 'grey/80',
 		},
+		'html[data-theme="light"] [data-line] *': {
+			color: 'var(--shiki-light)',
+		},
+		'html[data-theme="dark"] [data-line] *': {
+			color: 'var(--shiki-dark)',
+		},
 	},
 
 	// Useful for theme customization

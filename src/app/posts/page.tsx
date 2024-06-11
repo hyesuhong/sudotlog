@@ -1,3 +1,5 @@
+import { convertDateToString } from '@/lib/date';
+import { getAllPostInfoGroupByDate } from '@/lib/posts';
 import {
 	listWrapperLayout,
 	listYearLayout,
@@ -8,26 +10,28 @@ import {
 } from '@/styles';
 import Link from 'next/link';
 
-const emptyArray = new Array(10).fill('');
+export default async function Page() {
+	const infos = await getAllPostInfoGroupByDate();
 
-export default function Page() {
-	return (
+	return infos.length > 0 ? (
 		<>
-			<section className={listWrapperLayout}>
-				<p className={listYearLayout}>2024</p>
-				<ul className={postListLayout}>
-					{emptyArray.map((_, index) => (
-						<li key={index} className={postItemLayout}>
-							<Link href='/posts/slugggggg' className={postLinkLayout}>
-								<p className={postListTitle}>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
-								<p>{index % 2 === 0 ? '04.30' : '01.11'}</p>
-							</Link>
-						</li>
-					))}
-				</ul>
-			</section>
+			{infos.map(({ year, posts }, index) => (
+				<section className={listWrapperLayout} key={year + index}>
+					<p className={listYearLayout}>{year}</p>
+					<ul className={postListLayout}>
+						{posts.map((post, index) => (
+							<li key={index} className={postItemLayout}>
+								<Link href={`/posts/${post.slug}`} className={postLinkLayout}>
+									<p className={postListTitle}>{post.data.title}</p>
+									<p>{convertDateToString(post.data.date)}</p>
+								</Link>
+							</li>
+						))}
+					</ul>
+				</section>
+			))}
 		</>
+	) : (
+		<p>There is no post yet.</p>
 	);
 }

@@ -106,7 +106,7 @@ export const postInfoLayout = css({
 export const postContentLayout = css({
 	pt: 20,
 	'& :is(strong, b)': {
-		fontWeight: 700,
+		fontWeight: 500,
 	},
 	'& :is(em, i)': {
 		fontStyle: 'italic',
@@ -115,6 +115,37 @@ export const postContentLayout = css({
 		color: 'grey',
 		textDecoration: 'line-through',
 	},
+	'& code': {
+		fontFamily: 'jetBrainsMono',
+	},
+	'& [data-rehype-pretty-code-figure]': {
+		fontSize: '0.875rem',
+	},
+	'& [data-rehype-pretty-code-figure]:is(span)': {
+		py: 0.5,
+		px: 1,
+		bg: 'grey/20',
+	},
+	'& [data-rehype-pretty-code-figure]:is(figure)': {
+		my: 8,
+	},
+	'& [data-rehype-pretty-code-figure] pre': {
+		position: 'relative',
+		px: 4,
+		py: 2,
+		bg: 'grey/20',
+		overflowX: 'auto',
+	},
+	'& figure[data-rehype-pretty-code-figure] > [data-language]:not([data-language=""],[data-language="plaintext"])::after':
+		{
+			content: 'attr(data-language)',
+			position: 'absolute',
+			top: 2,
+			right: 2,
+			color: 'text',
+			opacity: 0.2,
+			fontSize: '0.9em',
+		},
 });
 
 export const backLinkStyle = css({
@@ -146,7 +177,7 @@ export const postInfoDate = css({
 });
 
 const postContentMarginBase = css.raw({
-	my: 5,
+	my: 8,
 });
 
 export const postContentHeadings = cva({
@@ -155,6 +186,7 @@ export const postContentHeadings = cva({
 		_first: {
 			mt: 0,
 		},
+		scrollMargin: '4rem',
 	},
 	variants: {
 		kind: {
@@ -180,6 +212,10 @@ export const postContentPara = css(postContentMarginBase, {
 
 const postContentList = cva({
 	base: {
+		display: 'flex',
+		flexDir: 'column',
+		rowGap: 2,
+
 		textStyle: 'paragraph',
 		paddingInlineStart: 5,
 		'& ::marker': {
@@ -187,12 +223,16 @@ const postContentList = cva({
 		},
 		'& :is(ul)': {
 			listStyle: 'circle',
+			my: 2,
+
 			'& :is(ul)': {
 				listStyle: 'square',
 			},
 		},
 		'& :is(ol)': {
 			listStyle: 'lower-alpha',
+			my: 2,
+
 			'& :is(ol)': {
 				listStyle: 'lower-roman',
 			},
@@ -215,7 +255,7 @@ export const postContentOrderd = css(
 	postContentList.raw({ kind: 'orderd' })
 );
 
-export const postContentunOrderd = css(
+export const postContentUnorderd = css(
 	postContentMarginBase,
 	postContentList.raw({ kind: 'unorderd' })
 );
@@ -230,36 +270,25 @@ export const postContentLink = cva({
 	},
 	variants: {
 		kind: {
-			outer: {},
+			outer: {
+				_after: {
+					content: '"->"',
+				},
+			},
 		},
 	},
 });
 
 export const postContentQuote = css(postContentMarginBase, {
 	paddingInlineStart: 4,
-	borderLeft: '2px solid {colors.muted}',
-});
-
-export const postContentCode = cva({
-	base: {
-		fontFamily: 'jetBrainsMono',
-		bg: 'muted',
-	},
-	variants: {
-		kind: {
-			inline: {
-				py: 0.5,
-				px: 1,
-			},
-			block: {
-				p: 4,
-				whiteSpace: 'break-spaces',
-			},
-		},
+	borderLeft: '4px solid {colors.muted}',
+	'& > p': {
+		my: 2,
 	},
 });
 
 export const postContentFigure = css(postContentMarginBase, {
+	position: 'relative',
 	display: 'flex',
 	flexDirection: 'column',
 	alignItems: 'center',
@@ -272,4 +301,39 @@ export const postContentFigure = css(postContentMarginBase, {
 		textStyle: 'caption',
 		color: 'grey',
 	},
+});
+
+export const postContentTable = css(postContentMarginBase, {
+	w: 'full',
+	'& tbody tr': {
+		_even: {
+			bg: 'muted/60',
+		},
+	},
+});
+
+export const postContentTh = css({
+	p: 2,
+	borderBottom: '1px solid {colors.muted}',
+	fontWeight: 500,
+});
+
+export const postContentTd = cva({
+	base: {
+		p: 2,
+	},
+	variants: {
+		align: {
+			right: {
+				textAlign: 'right',
+			},
+			center: {
+				textAlign: 'center',
+			},
+		},
+	},
+});
+
+export const postContentLine = css(postContentMarginBase, {
+	color: 'muted',
 });
