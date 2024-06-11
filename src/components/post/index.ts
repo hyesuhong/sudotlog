@@ -1,3 +1,3 @@
-import MdView from './mdView';
+import MdxRemote from './mdx-remote';
 
-export { MdView };
+export { MdxRemote };

@@ -1,5 +1,5 @@
 import { IcoArrowLeft } from '@/assets/icons';
-import { MdView } from '@/components/post';
+import { MdxRemote } from '@/components/post';
 import { TableOfContents } from '@/components/table-of-contents';
 import { convertDateToString } from '@/lib/date';
 import { getPostBySlug } from '@/lib/posts';
@@ -21,7 +21,7 @@ interface PostPageParams {
 // export function generateMetadata() {}
 
 export default async function Post({ params: { slug } }: PostPageParams) {
-	const post = await getPostBySlug(slug);
+	const { data, content } = await getPostBySlug(slug);
 
 	return (
 		<>
@@ -31,14 +31,14 @@ export default async function Post({ params: { slug } }: PostPageParams) {
 					<IcoArrowLeft />
 					Back to list
 				</Link>
-				<h1 className={postInfoTitle}>{post.data.title}</h1>
+				<h1 className={postInfoTitle}>{data.title}</h1>
 				<p className={postInfoDate}>
-					{convertDateToString(post.data.date, 'YYYY.MM.DD')}
+					{convertDateToString(data.date, 'YYYY.MM.DD')}
 				</p>
 			</section>
-			{post.content && (
+			{content && (
 				<section className={postContentLayout}>
-					<MdView content={post.content} />
+					<MdxRemote source={content} />
 				</section>
 			)}
 		</>

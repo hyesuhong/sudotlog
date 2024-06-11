@@ -115,6 +115,26 @@ export const postContentLayout = css({
 		color: 'grey',
 		textDecoration: 'line-through',
 	},
+	'& code': {
+		fontFamily: 'jetBrainsMono',
+	},
+	'& [data-rehype-pretty-code-figure]': {
+		fontSize: '0.875rem',
+	},
+	'& [data-rehype-pretty-code-figure]:is(span)': {
+		py: 0.5,
+		px: 1,
+		bg: 'grey/20',
+	},
+	'& [data-rehype-pretty-code-figure]:is(figure)': {
+		my: 8,
+	},
+	'& [data-rehype-pretty-code-figure] pre': {
+		px: 4,
+		py: 2,
+		bg: 'grey/20',
+		overflowX: 'auto',
+	},
 });
 
 export const backLinkStyle = css({
@@ -155,6 +175,7 @@ export const postContentHeadings = cva({
 		_first: {
 			mt: 0,
 		},
+		scrollMargin: '4rem',
 	},
 	variants: {
 		kind: {
@@ -183,6 +204,7 @@ const postContentList = cva({
 		display: 'flex',
 		flexDir: 'column',
 		rowGap: 2,
+
 		textStyle: 'paragraph',
 		paddingInlineStart: 5,
 		'& ::marker': {
@@ -191,6 +213,7 @@ const postContentList = cva({
 		'& :is(ul)': {
 			listStyle: 'circle',
 			my: 2,
+
 			'& :is(ul)': {
 				listStyle: 'square',
 			},
@@ -198,6 +221,7 @@ const postContentList = cva({
 		'& :is(ol)': {
 			listStyle: 'lower-alpha',
 			my: 2,
+
 			'& :is(ol)': {
 				listStyle: 'lower-roman',
 			},
@@ -235,41 +259,31 @@ export const postContentLink = cva({
 	},
 	variants: {
 		kind: {
-			outer: {},
+			outer: {
+				_after: {
+					content: '"->"',
+				},
+			},
 		},
 	},
 });
 
 export const postContentQuote = css(postContentMarginBase, {
 	paddingInlineStart: 4,
-	borderLeft: '2px solid {colors.muted}',
-});
-
-export const postContentCode = cva({
-	base: {
-		fontFamily: 'jetBrainsMono',
-		bg: 'muted',
-	},
-	variants: {
-		kind: {
-			inline: {
-				py: 0.5,
-				px: 1,
-			},
-			block: {
-				p: 4,
-				whiteSpace: 'break-spaces',
-			},
-		},
+	borderLeft: '4px solid {colors.muted}',
+	'& > p': {
+		my: 2,
 	},
 });
 
 export const postContentFigure = css(postContentMarginBase, {
+	position: 'relative',
 	display: 'flex',
 	flexDirection: 'column',
 	alignItems: 'center',
 	rowGap: 2,
 	'& :is(img, video)': {
+		position: 'static!',
 		maxW: 'full',
 		objectFit: 'contain',
 	},
@@ -280,6 +294,7 @@ export const postContentFigure = css(postContentMarginBase, {
 });
 
 export const postContentTable = css(postContentMarginBase, {
+	w: 'full',
 	'& tbody tr': {
 		_even: {
 			bg: 'muted/60',
@@ -307,4 +322,8 @@ export const postContentTd = cva({
 			},
 		},
 	},
+});
+
+export const postContentLine = css(postContentMarginBase, {
+	color: 'muted',
 });
