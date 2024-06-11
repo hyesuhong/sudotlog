@@ -130,11 +130,22 @@ export const postContentLayout = css({
 		my: 8,
 	},
 	'& [data-rehype-pretty-code-figure] pre': {
+		position: 'relative',
 		px: 4,
 		py: 2,
 		bg: 'grey/20',
 		overflowX: 'auto',
 	},
+	'& figure[data-rehype-pretty-code-figure] > [data-language]:not([data-language=""],[data-language="plaintext"])::after':
+		{
+			content: 'attr(data-language)',
+			position: 'absolute',
+			top: 2,
+			right: 2,
+			color: 'text',
+			opacity: 0.2,
+			fontSize: '0.9em',
+		},
 });
 
 export const backLinkStyle = css({
