@@ -283,7 +283,6 @@ export const postContentFigure = css(postContentMarginBase, {
 	alignItems: 'center',
 	rowGap: 2,
 	'& :is(img, video)': {
-		position: 'static!',
 		maxW: 'full',
 		objectFit: 'contain',
 	},
