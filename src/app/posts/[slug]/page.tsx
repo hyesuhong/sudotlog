@@ -1,6 +1,5 @@
 import { IcoArrowLeft } from '@/assets/icons';
 import { MdxRemote } from '@/components/post';
-import { TableOfContents } from '@/components/table-of-contents';
 import { convertDateToString } from '@/lib/date';
 import { getPostBySlug } from '@/lib/posts';
 import {
@@ -25,7 +24,6 @@ export default async function Post({ params: { slug } }: PostPageParams) {
 
 	return (
 		<>
-			<TableOfContents />
 			<section className={postInfoLayout}>
 				<Link href='' className={backLinkStyle}>
 					<IcoArrowLeft />
