@@ -153,12 +153,12 @@ export const backLinkStyle = css({
 	alignItems: 'center',
 	textStyle: 'caption',
 	color: 'grey',
+	cursor: 'pointer',
 	opacity: 0.7,
 	transition: 'opacity 0.2s ease-in',
 	_hover: {
 		opacity: 1,
 	},
-	// '& > svg': iconSizeVariants.raw({ size: 'small' }),
 	'& > svg': {
 		w: 7,
 		h: 7,
