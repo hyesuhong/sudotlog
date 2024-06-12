@@ -237,6 +237,14 @@ const postContentList = cva({
 				listStyle: 'lower-roman',
 			},
 		},
+		'& li.task-list-item': {
+			listStyle: 'none',
+
+			'& input[type="checkbox"]': {
+				ml: '-5',
+				mr: 1,
+			},
+		},
 	},
 	variants: {
 		kind: {
@@ -336,4 +344,35 @@ export const postContentTd = cva({
 
 export const postContentLine = css(postContentMarginBase, {
 	color: 'muted',
+});
+
+export const postContentCheckbox = css({
+	appearance: 'none',
+	position: 'relative',
+	width: 3,
+	height: 3,
+	border: '1px solid {colors.grey}',
+
+	_disabled: {
+		borderColor: 'muted',
+	},
+
+	_checked: {
+		_before: {
+			display: 'block',
+		},
+	},
+
+	_before: {
+		content: '""',
+		position: 'absolute',
+		top: '50%',
+		left: '50%',
+		transform: 'translate(-50%,-80%) rotate(-45deg)',
+		width: '70%',
+		height: '30%',
+		borderLeft: '1px solid {colors.grey}',
+		borderBottom: '1px solid {colors.grey}',
+		display: 'none',
+	},
 });

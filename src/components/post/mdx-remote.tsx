@@ -21,7 +21,6 @@ const options: MDXRemoteProps['options'] = {
 			[
 				rehypeAutolinkHeadings,
 				{
-					behavior: 'wrap',
 					properties: {
 						className: ['anchor'],
 					},
@@ -117,6 +116,8 @@ const components: MDXRemoteProps['components'] = {
 	a: (props) => <E.Link {...props} />,
 	blockquote: ({ children }) => <E.Quote>{children}</E.Quote>,
 	hr: () => <E.HrLine />,
+	input: ({ type, ...props }) =>
+		type === 'checkbox' ? <E.Checkbox {...props} /> : <input {...props} />,
 };
 
 export default function MdxRemote(props: Props) {
