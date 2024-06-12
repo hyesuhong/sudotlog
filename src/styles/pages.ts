@@ -376,3 +376,28 @@ export const postContentCheckbox = css({
 		display: 'none',
 	},
 });
+
+export const aboutImageWrapper = css({
+	mt: 10,
+	mb: 6,
+	w: '14.5rem',
+	h: '14.5rem',
+	overflow: 'hidden',
+	bg: 'secondary',
+	'& > img': {
+		w: 'full',
+		h: 'full',
+		objectFit: 'cover',
+	},
+});
+
+export const aboutFocusText = css({
+	color: 'primary',
+});
+
+export const aboutSection = css({
+	mb: 20,
+	_last: {
+		mb: 0,
+	},
+});
