@@ -10,11 +10,15 @@ tags:
 
 ## Headers
 
-```
+```md
 ## h2 Heading
+
 ### h3 Heading
+
 #### h4 Heading
+
 ##### h5 Heading
+
 ###### h6 Heading
 ```
 
@@ -155,7 +159,7 @@ spaces are not required.)
 
 ## Task lists
 
-```
+```md
 - [x] Finish my changes
 - [ ] Push my commits to GitHub
 - [ ] Open a pull request
@@ -190,7 +194,9 @@ Let's rename \*our-new-project\* to \*our-old-project\*.
 
 ## Links
 
-```
+```md
+[I'm this site's link](/post)
+
 [I'm an inline-style link](https://www.google.com)
 
 [I'm an inline-style link with title](https://www.google.com "Google's Homepage")
@@ -202,8 +208,8 @@ Let's rename \*our-new-project\* to \*our-old-project\*.
 Or leave it empty and use the [link text itself].
 
 URLs and URLs in angle brackets will automatically get turned into links.
-http://www.example.com or <http://www.example.com> and sometimes
-example.com (but not on Github, for example).
+http://www.example.com or <http://www.example.com> and sometimes example.com
+(but not on Github, for example).
 
 Some text to show that the reference links can follow later.
 
@@ -211,6 +217,8 @@ Some text to show that the reference links can follow later.
 [1]: http://slashdot.org
 [link text itself]: http://www.reddit.com
 ```
+
+[This is this site's link](/post)
 
 [I'm an inline-style link](https://www.google.com)
 
@@ -227,6 +235,8 @@ http://www.example.com or \<http://www.example.com\> and sometimes example.com
 (but not on Github, for example).
 
 Some text to show that the reference links can follow later.
+
+[Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt obcaecati id expedita harum nisi quod molestias quasi aperiam fugiat pariatur! Non quasi aperiam voluptatem inventore aut sunt architecto dolor cum?](https://github.com)
 
 [arbitrary case-insensitive reference text]: https://www.mozilla.org
 [1]: http://slashdot.org

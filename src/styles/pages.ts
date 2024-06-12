@@ -268,22 +268,22 @@ export const postContentUnorderd = css(
 	postContentList.raw({ kind: 'unorderd' })
 );
 
-export const postContentLink = cva({
-	base: {
-		position: 'relative',
-		textDecorationLine: 'underline',
-		textDecorationColor: 'grey',
-		textDecorationThickness: '1px',
-		textUnderlineOffset: '4px',
+export const postContentLink = css({
+	textDecorationLine: 'underline',
+	textDecorationColor: 'grey',
+	textDecorationThickness: '1px',
+	textUnderlineOffset: '4px',
+	transition: 'color 0.2s ease-out',
+
+	_hover: {
+		color: 'primary',
 	},
-	variants: {
-		kind: {
-			outer: {
-				_after: {
-					content: '"->"',
-				},
-			},
-		},
+
+	'& > svg': {
+		display: 'inline-block',
+		color: 'inherit',
+		width: '1em',
+		height: '1em',
 	},
 });
 
