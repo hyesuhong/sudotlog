@@ -1,3 +1,4 @@
+import { IcoArrowTopRight } from '@/assets/icons';
 import { postContentLink } from '@/styles';
 import NextLink from 'next/link';
 import { AnchorHTMLAttributes } from 'react';
@@ -8,6 +9,7 @@ export default function Link({
 	className,
 	rel,
 	children,
+	...props
 }: AnchorHTMLAttributes<HTMLAnchorElement>) {
 	const isInnerPage = href && href.startsWith('#');
 
@@ -15,16 +17,12 @@ export default function Link({
 		<NextLink
 			href={href}
 			target={target}
-			className={
-				isInnerPage
-					? ''
-					: className === 'external-link'
-						? postContentLink({ kind: 'outer' })
-						: postContentLink()
-			}
+			className={isInnerPage ? '' : postContentLink}
 			rel={rel}
+			{...props}
 		>
 			{children}
+			{className === 'external-link' && <IcoArrowTopRight />}
 		</NextLink>
 	) : null;
 }

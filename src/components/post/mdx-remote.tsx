@@ -1,7 +1,7 @@
 import plainDarkTheme from '@/styles/syntax/plain-dark-theme.json';
 import plainLightTheme from '@/styles/syntax/plain-light-theme.json';
 import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
-import { ReactNode, Suspense } from 'react';
+import { Suspense } from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
 import rehypePrettyCode from 'rehype-pretty-code';
@@ -21,7 +21,6 @@ const options: MDXRemoteProps['options'] = {
 			[
 				rehypeAutolinkHeadings,
 				{
-					behavior: 'wrap',
 					properties: {
 						className: ['anchor'],
 					},
@@ -87,23 +86,6 @@ const components: MDXRemoteProps['components'] = {
 		</E.Heading>
 	),
 	p: ({ children }) => {
-		if (Array.isArray(children)) {
-			const childrenArr = children as ReactNode[];
-			const hasImage = childrenArr.find((child) => {
-				return (
-					typeof child === 'object' &&
-					child !== null &&
-					!Array.isArray(child) &&
-					'type' in child &&
-					typeof child.type === 'function' &&
-					child.type.name === 'img'
-				);
-			});
-
-			if (hasImage) {
-				return <>{children}</>;
-			}
-		}
 		return <E.Text>{children}</E.Text>;
 	},
 	ul: ({ children }) => <E.List type='unordered'>{children}</E.List>,
@@ -117,6 +99,8 @@ const components: MDXRemoteProps['components'] = {
 	a: (props) => <E.Link {...props} />,
 	blockquote: ({ children }) => <E.Quote>{children}</E.Quote>,
 	hr: () => <E.HrLine />,
+	input: ({ type, ...props }) =>
+		type === 'checkbox' ? <E.Checkbox {...props} /> : <input {...props} />,
 };
 
 export default function MdxRemote(props: Props) {

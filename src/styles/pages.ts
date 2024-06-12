@@ -153,12 +153,12 @@ export const backLinkStyle = css({
 	alignItems: 'center',
 	textStyle: 'caption',
 	color: 'grey',
+	cursor: 'pointer',
 	opacity: 0.7,
 	transition: 'opacity 0.2s ease-in',
 	_hover: {
 		opacity: 1,
 	},
-	// '& > svg': iconSizeVariants.raw({ size: 'small' }),
 	'& > svg': {
 		w: 7,
 		h: 7,
@@ -237,6 +237,14 @@ const postContentList = cva({
 				listStyle: 'lower-roman',
 			},
 		},
+		'& li.task-list-item': {
+			listStyle: 'none',
+
+			'& input[type="checkbox"]': {
+				ml: '-5',
+				mr: 1,
+			},
+		},
 	},
 	variants: {
 		kind: {
@@ -260,22 +268,22 @@ export const postContentUnorderd = css(
 	postContentList.raw({ kind: 'unorderd' })
 );
 
-export const postContentLink = cva({
-	base: {
-		position: 'relative',
-		textDecorationLine: 'underline',
-		textDecorationColor: 'grey',
-		textDecorationThickness: '1px',
-		textUnderlineOffset: '4px',
+export const postContentLink = css({
+	textDecorationLine: 'underline',
+	textDecorationColor: 'grey',
+	textDecorationThickness: '1px',
+	textUnderlineOffset: '4px',
+	transition: 'color 0.2s ease-out',
+
+	_hover: {
+		color: 'primary',
 	},
-	variants: {
-		kind: {
-			outer: {
-				_after: {
-					content: '"->"',
-				},
-			},
-		},
+
+	'& > svg': {
+		display: 'inline-block',
+		color: 'inherit',
+		width: '1em',
+		height: '1em',
 	},
 });
 
@@ -336,4 +344,35 @@ export const postContentTd = cva({
 
 export const postContentLine = css(postContentMarginBase, {
 	color: 'muted',
+});
+
+export const postContentCheckbox = css({
+	appearance: 'none',
+	position: 'relative',
+	width: 3,
+	height: 3,
+	border: '1px solid {colors.grey}',
+
+	_disabled: {
+		borderColor: 'muted',
+	},
+
+	_checked: {
+		_before: {
+			display: 'block',
+		},
+	},
+
+	_before: {
+		content: '""',
+		position: 'absolute',
+		top: '50%',
+		left: '50%',
+		transform: 'translate(-50%,-80%) rotate(-45deg)',
+		width: '70%',
+		height: '30%',
+		borderLeft: '1px solid {colors.grey}',
+		borderBottom: '1px solid {colors.grey}',
+		display: 'none',
+	},
 });

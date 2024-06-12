@@ -1,4 +1,5 @@
+import BackLink from './backLink';
 import Heading from './heading';
 import Text from './text';
 
-export { Heading, Text };
+export { BackLink, Heading, Text };
