@@ -1,7 +1,7 @@
 import { BackLink } from '@/components/common';
 import { MdxRemote } from '@/components/post';
 import { convertDateToString } from '@/lib/date';
-import { getPostBySlug } from '@/lib/posts';
+import { getAllPostInfo, getPostBySlug } from '@/lib/posts';
 import {
 	postContentLayout,
 	postInfoDate,
@@ -15,7 +15,10 @@ interface PostPageParams {
 	};
 }
 
-// export function generateMetadata() {}
+export async function generateStaticParams() {
+	const posts = await getAllPostInfo();
+	return posts.map((post) => ({ slug: post.slug }));
+}
 
 export default async function Post({ params: { slug } }: PostPageParams) {
 	const { data, content } = await getPostBySlug(slug);
