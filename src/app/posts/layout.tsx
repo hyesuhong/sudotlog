@@ -1,4 +1,9 @@
 import { pageLayout } from '@/styles';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+	title: 'Posts',
+};
 
 type LayoutProps = {
 	children: React.ReactNode;

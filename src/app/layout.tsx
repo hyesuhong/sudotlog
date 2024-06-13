@@ -9,7 +9,10 @@ import './globals.css';
 
 export const metadata: Metadata = {
 	/* TODO: set metadataBase to use og & twitter image */
-	title: meta.title,
+	title: {
+		template: '%s | Su.log',
+		default: meta.title,
+	},
 	description: meta.description,
 	keywords: meta.keywords,
 	authors: meta.authors,
