@@ -8,10 +8,25 @@ import {
 	postInfoLayout,
 	postInfoTitle,
 } from '@/styles';
+import { Metadata } from 'next';
 
 interface PostPageParams {
 	params: {
 		slug: string;
+	};
+}
+
+export async function generateMetadata({
+	params,
+}: PostPageParams): Promise<Metadata> {
+	const { slug } = params;
+
+	const postInfo = await getPostBySlug(slug);
+
+	return {
+		title: postInfo.data.title,
+		keywords: postInfo.data.tags,
+		description: postInfo.data.description,
 	};
 }
 
