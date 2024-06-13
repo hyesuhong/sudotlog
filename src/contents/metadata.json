@@ -1,0 +1,20 @@
+{
+	"title": "Su.log",
+	"description": "FE Developter Su's blog",
+	"keywords": ["blog", "developer"],
+	"authors": { "name": "Hyesu Hong" },
+	"icons": [
+		{
+			"rel": "apple-touch-icon",
+			"url": "/icons/apple-touch-icon.png"
+		}
+	],
+	"og": {
+		"type": "website",
+		"image": "/icons/og.png"
+	},
+	"twitter": {
+		"card": "summary_large_image",
+		"image": "/icons/twitter.png"
+	}
+}

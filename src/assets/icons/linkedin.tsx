@@ -1,0 +1,25 @@
+export default function Linkedin({
+	className,
+}: React.HtmlHTMLAttributes<SVGSVGElement>) {
+	return (
+		<svg
+			width='100'
+			height='100'
+			viewBox='0 0 100 100'
+			fill='none'
+			xmlns='http://www.w3.org/2000/svg'
+			className={className}
+		>
+			<path
+				d='M33.8544 27.0588C31.0846 27.0588 28.8385 29.2983 28.8385 32.0659C28.8385 34.8335 31.0823 37.0818 33.8544 37.0818C36.6175 37.0818 38.8614 34.8335 38.8615 32.0659C38.8614 29.3028 36.6175 27.0588 33.8544 27.0588ZM60.0849 40.3489C55.9029 40.3489 53.1015 42.6466 51.9523 44.8203H51.8372V41.0396H43.5896V68.7H52.1825V55.0159C52.1825 51.4096 52.8657 47.9104 57.3401 47.9104C61.7488 47.9104 61.8115 52.0365 61.8115 55.2461V68.7H70.4V53.5284C70.4 46.0801 68.7889 40.3489 60.0849 40.3489ZM29.5513 41.0396V68.7H38.1487V41.0396H29.5513Z'
+				fill='currentColor'
+			/>
+			<path
+				fillRule='evenodd'
+				clipRule='evenodd'
+				d='M82 18H18V82H82V18ZM16 16V84H84V16H16Z'
+				fill='currentColor'
+			/>
+		</svg>
+	);
+}

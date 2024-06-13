@@ -1,0 +1,28 @@
+import { IcoArrowTopRight } from '@/assets/icons';
+import { postContentLink } from '@/styles';
+import NextLink from 'next/link';
+import { AnchorHTMLAttributes } from 'react';
+
+export default function Link({
+	href,
+	target,
+	className,
+	rel,
+	children,
+	...props
+}: AnchorHTMLAttributes<HTMLAnchorElement>) {
+	const isInnerPage = href && href.startsWith('#');
+
+	return href ? (
+		<NextLink
+			href={href}
+			target={target}
+			className={isInnerPage ? '' : postContentLink}
+			rel={rel}
+			{...props}
+		>
+			{children}
+			{className === 'external-link' && <IcoArrowTopRight />}
+		</NextLink>
+	) : null;
+}
