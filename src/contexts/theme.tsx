@@ -25,7 +25,7 @@ interface ThemeProviderProps extends PropsWithChildren {
 
 type SetThemeFunction = (value: string) => string;
 
-const MEDIA = '(prefers-color-scheme: light)';
+const MEDIA_DARK = '(prefers-color-scheme: dark)';
 const STORAGE_KEY = 'theme';
 const ATTRIBUTE = 'data-theme';
 const defaultTheme = ['light', 'dark'];
@@ -96,7 +96,7 @@ const getSystemTheme = () => {
 		return undefined;
 	}
 
-	const media = window.matchMedia(MEDIA);
+	const media = window.matchMedia(MEDIA_DARK);
 	const systemIsDark = media.matches;
 	const system = systemIsDark ? 'dark' : 'light';
 	return system;
