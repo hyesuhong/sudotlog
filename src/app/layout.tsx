@@ -8,7 +8,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-	/* TODO: set metadataBase to use og & twitter image */
+	metadataBase: new URL(meta.site),
 	title: {
 		template: '%s | Su.log',
 		default: meta.title,
@@ -22,6 +22,7 @@ export const metadata: Metadata = {
 		description: meta.description,
 		type: 'website',
 		siteName: meta.title,
+		url: meta.site,
 		images: {
 			url: meta.og.image,
 		},
@@ -30,6 +31,7 @@ export const metadata: Metadata = {
 		title: meta.title,
 		description: meta.description,
 		card: 'summary_large_image',
+		site: meta.site,
 		images: {
 			url: meta.twitter.image,
 		},
