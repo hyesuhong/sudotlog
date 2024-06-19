@@ -82,6 +82,7 @@ export const textStyles = defineTextStyles({
 		value: {
 			fontSize: '3rem',
 			fontWeight: 900,
+			lineHeight: '1.5',
 		},
 	},
 });
