@@ -1,6 +1,6 @@
 import { css, cva } from 'styled-system/css';
 
-export const mainLinkTitle = css({ textStyle: 'pageTitle' });
+export const mainLinkTitle = css({ textStyle: 'mainTitle' });
 
 export const mainLinkVariants = cva({
 	base: {
@@ -46,7 +46,6 @@ export const mainLinkVariants = cva({
 export const listWrapperLayout = css({
 	display: 'flex',
 	gap: 4,
-	textStyle: 'paragraph',
 });
 
 export const listYearLayout = css({

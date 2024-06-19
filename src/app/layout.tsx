@@ -2,10 +2,9 @@ import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { ThemeProvider } from '@/components/theme';
 import meta from '@/contents/metadata.json';
-import { rootClassName } from '@/styles';
+import '@/styles/globals.css';
 import { jetBrainsMono, pretendard } from '@/utils/font';
 import type { Metadata } from 'next';
-import './globals.css';
 
 export const metadata: Metadata = {
 	metadataBase: new URL(meta.site),
@@ -46,7 +45,7 @@ export default function RootLayout({
 	return (
 		<html
 			lang='en'
-			className={`${pretendard.variable} ${jetBrainsMono.variable} ${rootClassName}`}
+			className={`${pretendard.variable} ${jetBrainsMono.variable}`}
 		>
 			<body>
 				<ThemeProvider>

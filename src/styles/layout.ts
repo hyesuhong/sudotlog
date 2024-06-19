@@ -9,10 +9,8 @@ export const maxWidthRaw = css.raw({
 export const pageLayout = cva({
 	base: {
 		minH: 'calc(100vh - 2.5rem)',
-		maxW: '3xl',
-		mx: 'auto',
-		px: 6,
 		position: 'relative',
+		...maxWidthRaw,
 	},
 	variants: {
 		isMain: {
