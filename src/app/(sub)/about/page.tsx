@@ -1,11 +1,6 @@
 import { Image } from '@/components/common';
 import data from '@/contents/about.json';
-import {
-	aboutFocusText,
-	aboutImageWrapper,
-	aboutSection,
-	pageLayout,
-} from '@/styles';
+import { aboutFocusText, aboutImageWrapper, aboutSection } from '@/styles';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
@@ -15,7 +10,7 @@ export const metadata: Metadata = {
 
 export default function Page() {
 	return (
-		<main className={pageLayout()}>
+		<>
 			<section className={`content ${aboutSection}`}>
 				<h1>
 					About <span className={aboutFocusText}>Su</span>
@@ -35,6 +30,6 @@ export default function Page() {
 					))}
 				</ul>
 			</section>
-		</main>
+		</>
 	);
 }

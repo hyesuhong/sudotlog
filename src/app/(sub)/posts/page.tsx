@@ -1,7 +1,12 @@
 import { convertDateToString } from '@/lib/date';
 import { getAllPostInfoGroupByDate } from '@/lib/posts';
 import { listYear, twoColumnsLayout } from '@/styles';
+import { Metadata } from 'next';
 import Link from 'next/link';
+
+export const metadata: Metadata = {
+	title: 'Posts',
+};
 
 export default async function Page() {
 	const infos = await getAllPostInfoGroupByDate();
