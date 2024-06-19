@@ -8,6 +8,7 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkUnwrapImages from 'remark-unwrap-images';
+import * as C from '../common';
 import * as E from './elements';
 
 type Props = Pick<MDXRemoteProps, 'source'>;
@@ -56,51 +57,51 @@ const options: MDXRemoteProps['options'] = {
 
 const components: MDXRemoteProps['components'] = {
 	h1: ({ children, ...props }) => (
-		<E.Heading type='h1' {...props}>
+		<C.Heading type='h1' {...props}>
 			{children}
-		</E.Heading>
+		</C.Heading>
 	),
 	h2: ({ children, ...props }) => (
-		<E.Heading type='h2' {...props}>
+		<C.Heading type='h2' {...props}>
 			{children}
-		</E.Heading>
+		</C.Heading>
 	),
 	h3: ({ children, ...props }) => (
-		<E.Heading type='h3' {...props}>
+		<C.Heading type='h3' {...props}>
 			{children}
-		</E.Heading>
+		</C.Heading>
 	),
 	h4: ({ children, ...props }) => (
-		<E.Heading type='h4' {...props}>
+		<C.Heading type='h4' {...props}>
 			{children}
-		</E.Heading>
+		</C.Heading>
 	),
 	h5: ({ children, ...props }) => (
-		<E.Heading type='h5' {...props}>
+		<C.Heading type='h5' {...props}>
 			{children}
-		</E.Heading>
+		</C.Heading>
 	),
 	h6: ({ children, ...props }) => (
-		<E.Heading type='h6' {...props}>
+		<C.Heading type='h6' {...props}>
 			{children}
-		</E.Heading>
+		</C.Heading>
 	),
 	p: ({ children }) => {
-		return <E.Text>{children}</E.Text>;
+		return <C.Text>{children}</C.Text>;
 	},
-	ul: ({ children }) => <E.List type='unordered'>{children}</E.List>,
-	ol: ({ children }) => <E.List type='ordered'>{children}</E.List>,
+	ul: ({ children }) => <C.List type='unordered'>{children}</C.List>,
+	ol: ({ children }) => <C.List type='ordered'>{children}</C.List>,
 	table: ({ children }) => <E.Table>{children}</E.Table>,
 	th: ({ children }) => <E.Th>{children}</E.Th>,
 	td: ({ children, style }) => {
 		return <E.Td textAlign={style?.textAlign}>{children}</E.Td>;
 	},
-	img: ({ src, alt, title }) => <E.Image src={src} alt={alt} title={title} />,
-	a: (props) => <E.Link {...props} />,
+	img: ({ src, alt, title }) => <C.Image src={src} alt={alt} title={title} />,
+	a: (props) => <C.Link {...props} />,
 	blockquote: ({ children }) => <E.Quote>{children}</E.Quote>,
 	hr: () => <E.HrLine />,
 	input: ({ type, ...props }) =>
-		type === 'checkbox' ? <E.Checkbox {...props} /> : <input {...props} />,
+		type === 'checkbox' ? <C.Checkbox {...props} /> : <input {...props} />,
 };
 
 export default function MdxRemote(props: Props) {

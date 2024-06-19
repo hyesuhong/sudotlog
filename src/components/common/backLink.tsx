@@ -1,7 +1,7 @@
 'use client';
 
 import { IcoArrowLeft } from '@/assets/icons';
-import { backLinkStyle } from '@/styles';
+import { backLinkClassName } from '@/styles';
 import { useRouter } from 'next/navigation';
 
 type Props = {
@@ -14,7 +14,7 @@ export default function BackLink({ label }: Props) {
 	const onClick = () => router.back();
 
 	return (
-		<button className={backLinkStyle} onClick={onClick}>
+		<button className={backLinkClassName} onClick={onClick}>
 			<IcoArrowLeft />
 			{label ? label : 'Back'}
 		</button>

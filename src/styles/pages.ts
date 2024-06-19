@@ -50,23 +50,6 @@ export const listYear = css({
 	},
 });
 
-export const backLinkStyle = css({
-	display: 'flex',
-	alignItems: 'center',
-	textStyle: 'caption',
-	color: 'grey',
-	cursor: 'pointer',
-	opacity: 0.7,
-	transition: 'opacity 0.2s ease-in',
-	_hover: {
-		opacity: 1,
-	},
-	'& > svg': {
-		w: 7,
-		h: 7,
-	},
-});
-
 export const postInfoTitle = css({
 	textStyle: 'heading1',
 	mt: 4,
@@ -76,37 +59,6 @@ export const postInfoTitle = css({
 export const postInfoDate = css({
 	textStyle: 'caption',
 	color: 'grey',
-});
-
-export const postContentCheckbox = css({
-	appearance: 'none',
-	position: 'relative',
-	width: 3,
-	height: 3,
-	border: '1px solid {colors.grey}',
-
-	_disabled: {
-		borderColor: 'muted',
-	},
-
-	_checked: {
-		_before: {
-			display: 'block',
-		},
-	},
-
-	_before: {
-		content: '""',
-		position: 'absolute',
-		top: '50%',
-		left: '50%',
-		transform: 'translate(-50%,-80%) rotate(-45deg)',
-		width: '70%',
-		height: '30%',
-		borderLeft: '1px solid {colors.grey}',
-		borderBottom: '1px solid {colors.grey}',
-		display: 'none',
-	},
 });
 
 export const aboutImageWrapper = css({

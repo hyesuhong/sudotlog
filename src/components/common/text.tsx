@@ -1,5 +1,5 @@
-import { postContentPara } from '@/styles';
+import { PropsWithChildren } from 'react';
 
-export default function Text({ children }: React.PropsWithChildren) {
-	return <p className={postContentPara}>{children}</p>;
+export default function Text({ children }: PropsWithChildren) {
+	return <p>{children}</p>;
 }
