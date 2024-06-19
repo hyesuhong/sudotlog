@@ -30,6 +30,20 @@ export const textStyles = defineTextStyles({
 			lineHeight: '210%',
 		},
 	},
+	heading6: {
+		value: {
+			fontSize: '0.85rem',
+			fontWeight: 500,
+			lineHeight: '110%',
+		},
+	},
+	heading5: {
+		value: {
+			fontSize: '0.9rem',
+			fontWeight: 500,
+			lineHeight: '110%',
+		},
+	},
 	heading4: {
 		value: {
 			fontSize: '1rem',

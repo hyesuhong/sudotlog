@@ -1,4 +1,3 @@
-import { postContentOrderd, postContentUnorderd } from '@/styles';
 import { ReactNode } from 'react';
 
 type Props = {
@@ -9,8 +8,8 @@ type Props = {
 export default function List({ type, children }: Props) {
 	switch (type) {
 		case 'ordered':
-			return <ol className={postContentOrderd}>{children}</ol>;
+			return <ol>{children}</ol>;
 		case 'unordered':
-			return <ul className={postContentUnorderd}>{children}</ul>;
+			return <ul>{children}</ul>;
 	}
 }

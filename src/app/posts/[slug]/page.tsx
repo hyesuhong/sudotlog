@@ -2,12 +2,7 @@ import { BackLink } from '@/components/common';
 import { MdxRemote } from '@/components/post';
 import { convertDateToString } from '@/lib/date';
 import { getAllPostInfo, getPostBySlug } from '@/lib/posts';
-import {
-	postContentLayout,
-	postInfoDate,
-	postInfoLayout,
-	postInfoTitle,
-} from '@/styles';
+import { postDetailLayout, postInfoDate, postInfoTitle } from '@/styles';
 import { Metadata } from 'next';
 
 interface PostPageParams {
@@ -40,7 +35,7 @@ export default async function Post({ params: { slug } }: PostPageParams) {
 
 	return (
 		<>
-			<section className={postInfoLayout}>
+			<section className={postDetailLayout({ position: 'top' })}>
 				<BackLink label='Back to list' />
 				<h1 className={postInfoTitle}>{data.title}</h1>
 				<p className={postInfoDate}>
@@ -48,7 +43,9 @@ export default async function Post({ params: { slug } }: PostPageParams) {
 				</p>
 			</section>
 			{content && (
-				<section className={postContentLayout}>
+				<section
+					className={`postContents ${postDetailLayout({ position: 'bottom' })}`}
+				>
 					<MdxRemote source={content} />
 				</section>
 			)}

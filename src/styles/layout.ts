@@ -33,3 +33,18 @@ export const twoColumnsLayout = css({
 	display: 'flex',
 	gap: 4,
 });
+
+export const postDetailLayout = cva({
+	variants: {
+		position: {
+			top: {
+				pt: 4,
+				pb: 10,
+				borderBottom: '1px solid {colors.muted}',
+			},
+			bottom: {
+				pt: 20,
+			},
+		},
+	},
+});

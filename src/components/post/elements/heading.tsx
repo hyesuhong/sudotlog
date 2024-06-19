@@ -1,9 +1,7 @@
-import { postContentHeadings } from '@/styles';
+import { HTMLAttributes } from 'react';
 
-interface Props extends React.PropsWithChildren {
+interface Props extends HTMLAttributes<HTMLHeadingElement> {
 	type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-	id?: string;
-	className?: string;
 }
 
 export default function Heading({ type, children, ...props }: Props) {
@@ -11,23 +9,11 @@ export default function Heading({ type, children, ...props }: Props) {
 		case 'h1':
 			return <h1 {...props}>{children}</h1>;
 		case 'h2':
-			return (
-				<h2 {...props} className={postContentHeadings({ kind: 'heading1' })}>
-					{children}
-				</h2>
-			);
+			return <h2 {...props}>{children}</h2>;
 		case 'h3':
-			return (
-				<h3 {...props} className={postContentHeadings({ kind: 'heading2' })}>
-					{children}
-				</h3>
-			);
+			return <h3 {...props}>{children}</h3>;
 		case 'h4':
-			return (
-				<h4 {...props} className={postContentHeadings({ kind: 'heading3' })}>
-					{children}
-				</h4>
-			);
+			return <h4 {...props}>{children}</h4>;
 		case 'h5':
 			return <h5 {...props}>{children}</h5>;
 		case 'h6':
