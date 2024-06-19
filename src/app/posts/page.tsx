@@ -1,13 +1,6 @@
 import { convertDateToString } from '@/lib/date';
 import { getAllPostInfoGroupByDate } from '@/lib/posts';
-import {
-	listWrapperLayout,
-	listYearLayout,
-	postItemLayout,
-	postLinkLayout,
-	postListLayout,
-	postListTitle,
-} from '@/styles';
+import { listYear, twoColumnsLayout } from '@/styles';
 import Link from 'next/link';
 
 export default async function Page() {
@@ -16,13 +9,13 @@ export default async function Page() {
 	return infos.length > 0 ? (
 		<>
 			{infos.map(({ year, posts }, index) => (
-				<section className={listWrapperLayout} key={year + index}>
-					<p className={listYearLayout}>{year}</p>
-					<ul className={postListLayout}>
+				<section className={twoColumnsLayout} key={year + index}>
+					<p className={listYear}>{year}</p>
+					<ul className='postList'>
 						{posts.map((post, index) => (
-							<li key={index} className={postItemLayout}>
-								<Link href={`/posts/${post.slug}`} className={postLinkLayout}>
-									<p className={postListTitle}>{post.data.title}</p>
+							<li key={index}>
+								<Link href={`/posts/${post.slug}`}>
+									<p>{post.data.title}</p>
 									<p>{convertDateToString(post.data.date)}</p>
 								</Link>
 							</li>

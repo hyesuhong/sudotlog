@@ -28,3 +28,8 @@ export const pageLayout = cva({
 		isMain: false,
 	},
 });
+
+export const twoColumnsLayout = css({
+	display: 'flex',
+	gap: 4,
+});

@@ -43,57 +43,11 @@ export const mainLinkVariants = cva({
 	},
 });
 
-export const listWrapperLayout = css({
-	display: 'flex',
-	gap: 4,
-});
-
-export const listYearLayout = css({
+export const listYear = css({
 	lineHeight: '2.25rem',
 	md: {
 		flex: '0 0 6.75rem',
 	},
-});
-
-export const postListLayout = css({
-	flex: 1,
-	display: 'grid',
-	gridTemplateColumns: 'minmax(0,1fr) max-content',
-	gridAutoRows: '2.25rem',
-	rowGap: 2,
-	pl: 4,
-	borderLeft: '1px solid {colors.muted}',
-});
-
-export const postItemLayout = css({
-	gridColumn: 'span 2',
-
-	display: 'grid',
-	gridTemplateColumns: 'subgrid',
-	columnGap: 4,
-});
-
-export const postLinkLayout = css({
-	gridColumn: 'span 2',
-	display: 'grid',
-	gridTemplateColumns: 'subgrid',
-	px: 2,
-	alignItems: 'center',
-	'& :last-child': {
-		justifySelf: 'end',
-	},
-	md: {
-		transition: 'background-color 0.2s ease-in',
-		_hover: {
-			bg: 'secondary',
-		},
-	},
-});
-
-export const postListTitle = css({
-	overflow: 'hidden',
-	whiteSpace: 'nowrap',
-	textOverflow: 'ellipsis',
 });
 
 export const postInfoLayout = css({
