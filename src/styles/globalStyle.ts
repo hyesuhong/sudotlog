@@ -51,42 +51,42 @@ export const globalCss = defineGlobalStyles({
 	'.postList p:last-child': {
 		justifySelf: 'end',
 	},
-	/* post content  */
-	'.postContents > *:first-child': {
+	/* content  */
+	'.content > *:first-child': {
 		mt: '0!',
 	},
-	'.postContents :is(h1, h2, h3, h4, h5, h6)': {
+	'.content :is(h1, h2, h3, h4, h5, h6)': {
 		mb: 5,
 		scrollMargin: '4rem',
 	},
-	'.postContents h1': {
+	'.content h1': {
 		mt: 8,
 		textStyle: 'heading1',
 	},
-	'.postContents h2': {
+	'.content h2': {
 		mt: 7,
 		textStyle: 'heading2',
 	},
-	'.postContents h3': {
+	'.content h3': {
 		mt: 6,
 		textStyle: 'heading3',
 	},
-	'.postContents h4': {
+	'.content h4': {
 		mt: 5,
 		textStyle: 'heading4',
 	},
-	'.postContents h5': {
+	'.content h5': {
 		mt: 4,
 		textStyle: 'heading5',
 	},
-	'.postContents h6': {
+	'.content h6': {
 		mt: 3,
 		textStyle: 'heading6',
 	},
-	'.postContents > :is(p, ul, ol, blockquote, table, details, figure, hr)': {
+	'.content > :is(p, ul, ol, blockquote, table, details, figure, hr)': {
 		my: 8,
 	},
-	'.postContents :is(ul, ol)': {
+	'.content :is(ul, ol)': {
 		display: 'flex',
 		flexDir: 'column',
 		rowGap: 2,
@@ -120,20 +120,20 @@ export const globalCss = defineGlobalStyles({
 			},
 		},
 	},
-	'.postContents ul': {
+	'.content ul': {
 		listStyle: 'disc',
 	},
-	'.postContents ol': {
+	'.content ol': {
 		listStyle: 'decimal',
 	},
-	'.postContents blockquote': {
+	'.content blockquote': {
 		paddingInlineStart: 4,
 		borderLeft: '4px solid {colors.muted}',
 		'& > p': {
 			my: 2,
 		},
 	},
-	'.postContents figure:not([data-rehype-pretty-code-figure])': {
+	'.content figure:not([data-rehype-pretty-code-figure])': {
 		display: 'flex',
 		flexDir: 'column',
 		alignItems: 'center',
@@ -147,7 +147,7 @@ export const globalCss = defineGlobalStyles({
 			color: 'grey',
 		},
 	},
-	'.postContents table': {
+	'.content table': {
 		maxW: 'full',
 		overflowX: 'auto',
 		'& tbody tr': {
@@ -156,12 +156,12 @@ export const globalCss = defineGlobalStyles({
 			},
 		},
 	},
-	'.postContents th': {
+	'.content th': {
 		p: 2,
 		borderBottom: '1px solid {colors.muted}',
 		fontWeight: 500,
 	},
-	'.postContents td': {
+	'.content td': {
 		p: 2,
 		'&.right': {
 			textAlign: 'right',
@@ -170,10 +170,10 @@ export const globalCss = defineGlobalStyles({
 			textAlign: 'center',
 		},
 	},
-	'.postContents hr': {
+	'.content hr': {
 		color: 'muted',
 	},
-	'.postContents a': {
+	'.content a': {
 		textDecoration: 'underline',
 		textDecorationColor: 'grey',
 		textDecorationThickness: 1,
@@ -189,38 +189,38 @@ export const globalCss = defineGlobalStyles({
 			h: '1em',
 		},
 	},
-	'.postContents :is(strong, b)': {
+	'.content :is(strong, b)': {
 		fontWeight: 500,
 	},
-	'.postContents :is(em, i)': {
+	'.content :is(em, i)': {
 		fontStyle: 'italic',
 	},
-	'.postContents :is(s, del, strike)': {
+	'.content :is(s, del, strike)': {
 		color: 'grey',
 		textDecoration: 'line-through',
 	},
-	'.postContents :is(code)': {
+	'.content :is(code)': {
 		fontFamily: 'jetBrainsMono',
 	},
-	'.postContents [data-rehype-pretty-code-figure]': {
+	'.content [data-rehype-pretty-code-figure]': {
 		position: 'relative',
 		fontSize: '0.875rem',
 	},
-	'.postContents [data-rehype-pretty-code-figure]:is(span)': {
+	'.content [data-rehype-pretty-code-figure]:is(span)': {
 		py: 0.5,
 		px: 1,
 		bg: 'grey/20',
 	},
-	'.postContents [data-rehype-pretty-code-figure]:is(figure)': {
+	'.content [data-rehype-pretty-code-figure]:is(figure)': {
 		my: 8,
 	},
-	'.postContents [data-rehype-pretty-code-figure] pre': {
+	'.content [data-rehype-pretty-code-figure] pre': {
 		px: 4,
 		py: 2,
 		bg: 'grey/20',
 		overflowX: 'auto',
 	},
-	'.postContents figure[data-rehype-pretty-code-figure] > [data-language]:not([data-language=""],[data-language="plaintext"])::after':
+	'.content figure[data-rehype-pretty-code-figure] > [data-language]:not([data-language=""],[data-language="plaintext"])::after':
 		{
 			content: 'attr(data-language)',
 			position: 'absolute',

@@ -44,7 +44,7 @@ export default async function Post({ params: { slug } }: PostPageParams) {
 			</section>
 			{content && (
 				<section
-					className={`postContents ${postDetailLayout({ position: 'bottom' })}`}
+					className={`content ${postDetailLayout({ position: 'bottom' })}`}
 				>
 					<MdxRemote source={content} />
 				</section>
