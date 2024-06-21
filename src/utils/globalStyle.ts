@@ -220,14 +220,4 @@ export const globalCss = defineGlobalStyles({
 		bg: 'grey/20',
 		overflowX: 'auto',
 	},
-	'.content figure[data-rehype-pretty-code-figure] > [data-language]:not([data-language=""],[data-language="plaintext"])::after':
-		{
-			content: 'attr(data-language)',
-			position: 'absolute',
-			top: 2,
-			right: 2,
-			color: 'text',
-			opacity: 0.2,
-			fontSize: '0.9em',
-		},
 });

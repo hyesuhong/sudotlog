@@ -173,3 +173,25 @@ export const checkboxClassName = css({
 		display: 'none',
 	},
 });
+
+export const copyButton = css({
+	position: 'absolute',
+	top: 2,
+	right: 2,
+	w: 7,
+	h: 7,
+	opacity: 0.6,
+
+	md: {
+		cursor: 'pointer',
+
+		_hover: {
+			opacity: 1,
+		},
+	},
+
+	'& > svg': {
+		w: 'full',
+		h: 'full',
+	},
+});

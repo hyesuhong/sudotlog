@@ -30,6 +30,6 @@ export default async function Page() {
 			))}
 		</>
 	) : (
-		<p>There is no post yet.</p>
+		<p>아직 작성된 글이 없습니다.</p>
 	);
 }

@@ -102,6 +102,12 @@ const components: MDXRemoteProps['components'] = {
 	hr: () => <E.HrLine />,
 	input: ({ type, ...props }) =>
 		type === 'checkbox' ? <C.Checkbox {...props} /> : <input {...props} />,
+	figure: ({ children, ...props }) => {
+		if ('data-rehype-pretty-code-figure' in props) {
+			return <E.CodeBlock {...props}>{children}</E.CodeBlock>;
+		}
+		return <figure {...props}>{children}</figure>;
+	},
 };
 
 export default function MdxRemote(props: Props) {
