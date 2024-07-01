@@ -9,10 +9,8 @@ export const maxWidthRaw = css.raw({
 export const pageLayout = cva({
 	base: {
 		minH: 'calc(100vh - 2.5rem)',
-		maxW: '3xl',
-		mx: 'auto',
-		px: 6,
 		position: 'relative',
+		...maxWidthRaw,
 	},
 	variants: {
 		isMain: {
@@ -28,5 +26,25 @@ export const pageLayout = cva({
 	},
 	defaultVariants: {
 		isMain: false,
+	},
+});
+
+export const twoColumnsLayout = css({
+	display: 'flex',
+	gap: 4,
+});
+
+export const postDetailLayout = cva({
+	variants: {
+		position: {
+			top: {
+				pt: 4,
+				pb: 10,
+				borderBottom: '1px solid {colors.muted}',
+			},
+			bottom: {
+				pt: 20,
+			},
+		},
 	},
 });

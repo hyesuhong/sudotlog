@@ -1,6 +1,5 @@
 'use client';
 
-import { postContentFigure } from '@/styles';
 import NextImage, { ImageLoader } from 'next/image';
 import { SyntheticEvent, useState } from 'react';
 
@@ -30,7 +29,7 @@ export default function Image({ src, alt, title }: Props) {
 	};
 
 	return (
-		<figure className={postContentFigure}>
+		<figure>
 			{src ? (
 				<NextImage
 					src={src}
@@ -39,11 +38,12 @@ export default function Image({ src, alt, title }: Props) {
 					height={size.height}
 					loader={imageLoader}
 					onLoad={onLoad}
+					title={title}
 				/>
 			) : (
 				<>empty</>
 			)}
-			{alt || title ? <figcaption>{title ? title : alt}</figcaption> : null}
+			{title && <figcaption>{title}</figcaption>}
 		</figure>
 	);
 }

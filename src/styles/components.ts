@@ -125,3 +125,73 @@ export const tocTopButtonClassName = css({
 		h: 'full',
 	},
 });
+
+export const backLinkClassName = css({
+	display: 'flex',
+	alignItems: 'center',
+	textStyle: 'caption',
+	color: 'grey',
+	cursor: 'pointer',
+	opacity: 0.7,
+	transition: 'opacity 0.2s ease-in',
+	_hover: {
+		opacity: 1,
+	},
+	'& > svg': {
+		w: 7,
+		h: 7,
+	},
+});
+
+export const checkboxClassName = css({
+	appearance: 'none',
+	position: 'relative',
+	width: 3,
+	height: 3,
+	border: '1px solid {colors.grey}',
+
+	_disabled: {
+		borderColor: 'muted',
+	},
+
+	_checked: {
+		_before: {
+			display: 'block',
+		},
+	},
+
+	_before: {
+		content: '""',
+		position: 'absolute',
+		top: '50%',
+		left: '50%',
+		transform: 'translate(-50%,-80%) rotate(-45deg)',
+		width: '70%',
+		height: '30%',
+		borderLeft: '1px solid {colors.grey}',
+		borderBottom: '1px solid {colors.grey}',
+		display: 'none',
+	},
+});
+
+export const copyButton = css({
+	position: 'absolute',
+	top: 2,
+	right: 2,
+	w: 7,
+	h: 7,
+	opacity: 0.6,
+
+	md: {
+		cursor: 'pointer',
+
+		_hover: {
+			opacity: 1,
+		},
+	},
+
+	'& > svg': {
+		w: 'full',
+		h: 'full',
+	},
+});

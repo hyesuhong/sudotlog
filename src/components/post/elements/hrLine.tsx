@@ -1,5 +1,5 @@
-import { postContentLine } from '@/styles';
+import { HTMLAttributes } from 'react';
 
-export default function HrLine() {
-	return <hr className={postContentLine} />;
+export default function HrLine(props: HTMLAttributes<HTMLHRElement>) {
+	return <hr {...props} />;
 }
