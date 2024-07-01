@@ -202,6 +202,9 @@ export const globalCss = defineGlobalStyles({
 	'.content :is(code)': {
 		fontFamily: 'jetBrainsMono',
 	},
+	'.content :is(mark)': {
+		bg: 'primary/20',
+	},
 	'.content [data-rehype-pretty-code-figure]': {
 		position: 'relative',
 		fontSize: '0.875rem',
@@ -219,5 +222,6 @@ export const globalCss = defineGlobalStyles({
 		py: 2,
 		bg: 'grey/20',
 		overflowX: 'auto',
+		tabSize: 2,
 	},
 });
