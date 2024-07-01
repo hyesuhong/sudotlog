@@ -1,0 +1,26 @@
+{
+	"internal": [
+		{
+			"label": "About",
+			"href": "/about"
+		},
+		{
+			"label": "Posts",
+			"href": "/posts"
+		}
+	],
+	"external": {
+		"github": {
+			"name": "Github",
+			"href": "https://github.com/hyesuhong"
+		},
+		"mail": {
+			"name": "Mail",
+			"href": "mailto:honghs95@gmail.com"
+		},
+		"linkedin": {
+			"name": "Linkedin",
+			"href": "https://www.linkedin.com/in/hyesu-hong-03110725a"
+		}
+	}
+}

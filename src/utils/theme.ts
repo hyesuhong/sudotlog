@@ -74,8 +74,9 @@ export const textStyles = defineTextStyles({
 	},
 	headerLogo: {
 		value: {
-			fontSize: '2rem',
+			fontSize: '1.25rem',
 			fontWeight: 900,
+			fontStyle: 'italic',
 		},
 	},
 	mainTitle: {
