@@ -84,6 +84,7 @@ export const textStyles = defineTextStyles({
 			fontSize: '3rem',
 			fontWeight: 900,
 			lineHeight: '1.5',
+			fontStyle: 'italic',
 		},
 	},
 });

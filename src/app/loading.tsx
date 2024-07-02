@@ -1,3 +1,9 @@
+import { pageLayout } from '@/styles';
+
 export default function Loading() {
-	return <>loading...</>;
+	return (
+		<main className={pageLayout({ isMain: true })}>
+			<p>Loaidng...</p>
+		</main>
+	);
 }
