@@ -8,6 +8,7 @@ type PostFrontMatter = {
 	title: string;
 	description?: string;
 	date: Date;
+	isDraft: boolean;
 	tags?: string[];
 };
 
@@ -22,33 +23,31 @@ type GroupedPostsByYear = {
 	posts: AllPostsReturns[];
 };
 
+type OrderBy = 'ASC' | 'DESC';
+
 const TARGET_DIR = join(cwd(), 'src', 'contents', 'posts');
 
 export async function getAllPostInfo() {
-	const slugs = await _getAllPostSlugs();
-
-	const info = await Promise.all(
-		slugs.map((slug) => _getPostBySlug(slug, { onlyFrontMatter: true }))
-	);
-
-	return info;
-}
-
-export async function getAllPostInfoGroupByDate() {
 	const slugs = await _getAllPostSlugs();
 
 	if (slugs.length < 1) {
 		return [];
 	}
 
-	const info = await Promise.all(
+	const data = await Promise.all(
 		slugs.map((slug) => _getPostBySlug(slug, { onlyFrontMatter: true }))
 	);
 
-	const sortedInfo = _sortByDate(info);
-	const groupedInfo = _groupByDate(sortedInfo);
+	return _filterDraft(data);
+}
 
-	return groupedInfo;
+export async function getAllPostInfoGroupByDate() {
+	const data = await getAllPostInfo();
+
+	const sortedData = _sortByDate(data);
+	const groupedData = _groupByDate(sortedData);
+
+	return groupedData;
 }
 
 export async function getPostBySlug(slug: string) {
@@ -112,7 +111,10 @@ async function _getFilePath(slug: string) {
 	return notFound();
 }
 
-type OrderBy = 'ASC' | 'DESC';
+function _filterDraft(data: AllPostsReturns[]) {
+	const result = data.filter((d) => !d.data.isDraft);
+	return result;
+}
 
 function _sortByDate(data: AllPostsReturns[], orderBy: OrderBy = 'DESC') {
 	const sortedData = data.toSorted((a, b) => {
