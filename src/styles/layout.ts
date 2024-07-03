@@ -8,7 +8,7 @@ export const maxWidthRaw = css.raw({
 
 export const pageLayout = cva({
 	base: {
-		minH: 'calc(100vh - 3.5rem)',
+		minH: 'screen',
 		position: 'relative',
 		...maxWidthRaw,
 	},
@@ -16,6 +16,7 @@ export const pageLayout = cva({
 		isMain: {
 			true: {
 				display: 'flex',
+				flexDir: 'column',
 				alignItems: 'center',
 				justifyContent: 'center',
 			},

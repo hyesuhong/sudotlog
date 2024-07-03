@@ -2,11 +2,13 @@
 	"internal": [
 		{
 			"label": "About",
-			"href": "/about"
+			"href": "/about",
+			"description": "Who is Su?"
 		},
 		{
 			"label": "Posts",
-			"href": "/posts"
+			"href": "/posts",
+			"description": "Let's check logs"
 		}
 	],
 	"external": {

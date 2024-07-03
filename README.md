@@ -25,4 +25,4 @@
 - [ ] Comment with [Giscus](https://github.com/giscus/giscus)
 - [ ] Google Analytics
 - [x] Error, Not Found, Loading
-- [ ] Redesign(main page, header, footer)
+- [x] Redesign(main page, header, footer)
