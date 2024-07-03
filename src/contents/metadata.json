@@ -8,6 +8,10 @@
 		{
 			"rel": "apple-touch-icon",
 			"url": "/icons/apple-touch-icon.png"
+		},
+		{
+			"rel": "icon",
+			"url": "/icons/favicon.png"
 		}
 	],
 	"og": {

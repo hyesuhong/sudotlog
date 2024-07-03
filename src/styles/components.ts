@@ -10,6 +10,7 @@ export const headerElClassName = css(maxWidthRaw, {
 	h: '3.5rem',
 	display: 'flex',
 	alignItems: 'center',
+	columnGap: 4,
 	zIndex: 10,
 });
 
@@ -21,30 +22,49 @@ export const headerLogoClassName = css({
 	},
 });
 
+export const headerNavClassName = css({
+	display: 'flex',
+	flex: 1,
+	justifyContent: 'space-between',
+	alignItems: 'center',
+});
+
+export const haederListClassName = css({
+	display: 'flex',
+	columnGap: 2,
+});
+
+export const headerNavLink = css({
+	textStyle: 'caption',
+	color: 'grey',
+	transition: 'color 0.2s ease-in',
+	'&:not(.current):hover': {
+		color: 'text',
+	},
+	'&.current': {
+		color: 'primary',
+	},
+});
+
 export const footerElClassName = css(maxWidthRaw, {
 	display: 'flex',
-	alignItems: 'center',
-	h: 10,
+	flexDir: 'column',
+	justifyContent: 'center',
+	rowGap: 1,
+	h: 14,
 });
 
 export const copyrightClassName = css({
 	textStyle: 'label',
+	lineHeight: 1,
 });
 
-export const footerLinkListClassName = css({
-	display: 'flex',
-	columnGap: 1,
-	ml: 6,
-	mr: 'auto',
-});
-
-export const footerLinkItemClassName = css({
+export const iconLinkClassName = css({
 	opacity: 0.6,
 	transition: 'opacity 0.3s ease-in',
 	_hover: {
 		opacity: 1,
 	},
-	// '& > svg': iconSizeVariants.raw({ size: 'small' }),
 	'& > svg': {
 		w: 7,
 		h: 7,
