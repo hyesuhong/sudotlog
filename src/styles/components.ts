@@ -215,3 +215,30 @@ export const copyButton = css({
 		h: 'full',
 	},
 });
+
+export const buttonClass = css({
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	columnGap: 2,
+
+	minW: 8,
+	h: 8,
+	p: 1,
+
+	bg: 'muted/50',
+	color: 'grey',
+	textStyle: 'label',
+	cursor: 'pointer',
+	transition: 'background 0.2s ease-in, color 0.2s ease-in',
+
+	_hover: {
+		bg: 'muted',
+		color: 'text',
+	},
+
+	'& > svg': {
+		w: 4,
+		h: 4,
+	},
+});
