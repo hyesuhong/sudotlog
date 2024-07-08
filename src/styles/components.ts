@@ -130,10 +130,14 @@ export const tocStickyWrapperClassName = css({
 });
 
 export const tocListClassName = css({
-	p: 4,
-	mb: 4,
+	display: 'flex',
+	flexDir: 'column',
+	rowGap: 1,
+	py: 1,
+	px: 3,
 	maxH: 'calc(100vh - 11.25rem )',
-	borderBottom: '1px solid {colors.muted}',
+	borderLeft: '1px solid {colors.muted}',
+	textStyle: 'label',
 });
 
 export const tocTopButtonClassName = css({

@@ -1,7 +1,8 @@
 import { BackLink } from '@/components/common';
 import { MdxRemote } from '@/components/post';
+import { TableOfContents } from '@/components/table-of-contents';
 import { convertDateToString } from '@/lib/date';
-import { getAllPostInfo, getPostBySlug } from '@/lib/posts';
+import { generateToc, getAllPostInfo, getPostBySlug } from '@/lib/posts';
 import { postDetailLayout, postInfoDate, postInfoTitle } from '@/styles';
 import { Metadata } from 'next';
 
@@ -32,9 +33,11 @@ export async function generateStaticParams() {
 
 export default async function Post({ params: { slug } }: PostPageParams) {
 	const { data, content } = await getPostBySlug(slug);
+	const toc = content ? generateToc(content) : [];
 
 	return (
 		<>
+			<TableOfContents headers={toc} />
 			<section className={postDetailLayout({ position: 'top' })}>
 				<BackLink label='Back to list' />
 				<h1 className={postInfoTitle}>{data.title}</h1>

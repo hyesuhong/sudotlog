@@ -2,6 +2,8 @@ import { IcoArrowTopRight } from '@/assets/icons';
 import NextLink from 'next/link';
 import { AnchorHTMLAttributes } from 'react';
 
+// const regExp = /^[#/]/;
+
 export default function Link({
 	href,
 	target,
@@ -10,7 +12,8 @@ export default function Link({
 	children,
 	...props
 }: AnchorHTMLAttributes<HTMLAnchorElement>) {
-	// const isInnerPage = href && href.startsWith('#');
+	// const isInnerPage = href && regExp.test(href);
+	// console.log(href, isInnerPage);
 
 	return href ? (
 		<NextLink href={href} target={target} rel={rel} {...props}>
