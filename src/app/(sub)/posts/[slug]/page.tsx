@@ -1,8 +1,8 @@
 import { BackLink } from '@/components/common';
 import { MdxRemote } from '@/components/post';
 import { TableOfContents } from '@/components/table-of-contents';
-import { convertDateToString } from '@/lib/date';
-import { generateToc, getAllPostInfo, getPostBySlug } from '@/lib/posts';
+import { generateToc, getAllPostInfo, getPostBySlug } from '@/libs/posts';
+import { convertDateToString } from '@/libs/utils/date';
 import { postDetailLayout, postInfoDate, postInfoTitle } from '@/styles';
 import { Metadata } from 'next';
 

@@ -1,5 +1,5 @@
-import { globalCss } from '@/utils/globalStyle';
-import { semanticTokens, textStyles, tokens } from '@/utils/theme';
+import { globalCss } from '@/libs/utils/globalStyle';
+import { semanticTokens, textStyles, tokens } from '@/libs/utils/theme';
 import { defineConfig } from '@pandacss/dev';
 
 export default defineConfig({

@@ -2,8 +2,8 @@ import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { ThemeProvider } from '@/components/theme';
 import meta from '@/data/metadata.json';
+import { jetBrainsMono, pretendard } from '@/libs/utils/font';
 import '@/styles/globals.css';
-import { jetBrainsMono, pretendard } from '@/utils/font';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {

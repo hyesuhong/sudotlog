@@ -1,5 +1,5 @@
-import { convertDateToString } from '@/lib/date';
-import { getAllPostInfoGroupByDate } from '@/lib/posts';
+import { getAllPostInfoGroupByDate } from '@/libs/posts';
+import { convertDateToString } from '@/libs/utils/date';
 import { listYear, twoColumnsLayout } from '@/styles';
 import { Metadata } from 'next';
 import Link from 'next/link';

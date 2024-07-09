@@ -1,5 +1,5 @@
 import meta from '@/data/metadata.json';
-import { getAllPostInfo } from '@/lib/posts';
+import { getAllPostInfo } from '@/libs/posts';
 import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

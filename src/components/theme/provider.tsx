@@ -1,6 +1,6 @@
 'use client';
 
-import { ThemeProvider } from '@/contexts/theme';
+import { ThemeProvider } from '@/libs/contexts/theme';
 import { useEffect, useState } from 'react';
 
 export default function Provider({ children }: React.PropsWithChildren) {

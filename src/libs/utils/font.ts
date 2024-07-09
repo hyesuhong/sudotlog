@@ -1,7 +1,7 @@
 import localFont from 'next/font/local';
 
 const pretendard = localFont({
-	src: '../assets/fonts/pretendard/variable/PretendardVariable.woff2',
+	src: '../../assets/fonts/pretendard/variable/PretendardVariable.woff2',
 	display: 'swap',
 	weight: '100 900',
 	preload: true,
@@ -11,12 +11,12 @@ const pretendard = localFont({
 const jetBrainsMono = localFont({
 	src: [
 		{
-			path: '../assets/fonts/jetBrainsMono/variable/JetBrainsMono[wght].ttf',
+			path: '../../assets/fonts/jetBrainsMono/variable/JetBrainsMono[wght].ttf',
 			weight: '100 900',
 			style: 'normal',
 		},
 		{
-			path: '../assets/fonts/jetBrainsMono/variable/JetBrainsMono-Italic[wght].ttf',
+			path: '../../assets/fonts/jetBrainsMono/variable/JetBrainsMono-Italic[wght].ttf',
 			weight: '100 900',
 			style: 'italic',
 		},
