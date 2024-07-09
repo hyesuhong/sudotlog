@@ -171,7 +171,8 @@ export function generateToc(content: string) {
 		const slug = text
 			.trim()
 			.replace(/\s/g, '-')
-			.replace(/!@#$%^&*()[]{}:;'",.\/?/g, '');
+			.replace(/!@#$%^&*()[]{}:;'",.\/?/g, '')
+			.toLowerCase();
 
 		return { depth: depth?.length || 0, text, slug };
 	});
@@ -185,7 +186,7 @@ function _buildTocHierarchy(headers: Header[]) {
 	const hierarchy = [];
 	const parentHeader = new Map<number, Header>();
 
-	for (let header of headers) {
+	for (const header of headers) {
 		const { depth } = header;
 		const h: Header = { ...header };
 		parentHeader.set(header.depth, h);
