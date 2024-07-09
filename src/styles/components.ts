@@ -138,6 +138,14 @@ export const tocListClassName = css({
 	maxH: 'calc(100vh - 11.25rem )',
 	borderLeft: '1px solid {colors.muted}',
 	textStyle: 'label',
+
+	'& a': {
+		color: 'grey',
+	},
+
+	'& a.active': {
+		color: 'primary',
+	},
 });
 
 export const tocTopButtonClassName = css({

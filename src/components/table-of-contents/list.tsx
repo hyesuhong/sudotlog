@@ -1,5 +1,5 @@
 import { tocListClassName } from '@/styles';
-import Link from 'next/link';
+import { Link } from '../common';
 
 type Header = {
 	depth: number;
