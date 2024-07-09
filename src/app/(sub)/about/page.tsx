@@ -1,5 +1,5 @@
 import { Image } from '@/components/common';
-import data from '@/contents/about.json';
+import data from '@/data/about.json';
 import { aboutFocusText, aboutImageWrapper, aboutSection } from '@/styles';
 import { Metadata } from 'next';
 import Link from 'next/link';

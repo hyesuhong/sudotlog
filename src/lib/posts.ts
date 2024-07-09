@@ -32,7 +32,7 @@ type Header = {
 	sub?: Header[];
 };
 
-const TARGET_DIR = join(cwd(), 'src', 'contents', 'posts');
+const TARGET_DIR = join(cwd(), 'src', 'data', 'posts');
 
 export async function getAllPostInfo() {
 	const slugs = await _getAllPostSlugs();

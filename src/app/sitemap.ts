@@ -1,4 +1,4 @@
-import meta from '@/contents/metadata.json';
+import meta from '@/data/metadata.json';
 import { getAllPostInfo } from '@/lib/posts';
 import { MetadataRoute } from 'next';
 
