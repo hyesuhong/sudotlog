@@ -55,16 +55,39 @@ export const postInfoDate = css({
 });
 
 export const aboutImageWrapper = css({
+	position: 'relative',
 	mt: 10,
 	mb: 6,
 	w: '14.5rem',
 	h: '14.5rem',
 	overflow: 'hidden',
 	bg: 'secondary',
-	'& > img': {
+	'& *': {
 		w: 'full',
 		h: 'full',
-		objectFit: 'cover',
+	},
+	'& img': {
+		filter: 'grayScale(1)',
+		transition: 'filter 0.2s ease-in',
+	},
+	_after: {
+		content: '""',
+		position: 'absolute',
+		top: 0,
+		left: 0,
+		w: 'full',
+		h: 'full',
+		bg: 'violet.700',
+		mixBlendMode: 'screen',
+		transition: 'opacity 0.2s ease-in',
+	},
+	_hover: {
+		_after: {
+			opacity: 0,
+		},
+		'& img': {
+			filter: 'grayScale(0)',
+		},
 	},
 });
 

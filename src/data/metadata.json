@@ -4,16 +4,11 @@
 	"description": "FE Developter Su's blog",
 	"keywords": ["blog", "developer"],
 	"authors": { "name": "Hyesu Hong" },
-	"icons": [
-		{
-			"rel": "apple-touch-icon",
-			"url": "/icons/apple-touch-icon.png"
-		},
-		{
-			"rel": "icon",
-			"url": "/icons/favicon.png"
-		}
-	],
+	"icons": {
+		"icon": "/icons/favicon.png",
+		"shortcut": "/icons/favicon.png",
+		"apple": "/icons/apple-touch-icon.png"
+	},
 	"og": {
 		"type": "website",
 		"image": "/icons/og.png"

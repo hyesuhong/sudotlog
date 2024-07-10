@@ -3,6 +3,7 @@ import data from '@/data/about.json';
 import { aboutFocusText, aboutImageWrapper, aboutSection } from '@/styles';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { Fragment } from 'react';
 
 export const metadata: Metadata = {
 	title: 'About',
@@ -15,8 +16,19 @@ export default function Page() {
 				<h1>
 					About <span className={aboutFocusText}>Su</span>
 				</h1>
-				<div className={aboutImageWrapper}>{data.profile && <Image />}</div>
-				<p>{data.description}</p>
+				{data.profile && (
+					<div className={aboutImageWrapper}>
+						<Image src={data.profile} alt="Su's profile" />
+					</div>
+				)}
+				<p>
+					{data.description.split('\n').map((desc, index, arr) => (
+						<Fragment key={index}>
+							{desc}
+							{index < arr.length - 1 && <br />}
+						</Fragment>
+					))}
+				</p>
 			</section>
 			<section className={`content ${aboutSection}`}>
 				<h2>Let&apos;s get in touch</h2>
