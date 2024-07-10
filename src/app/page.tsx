@@ -1,4 +1,4 @@
-import links from '@/contents/links.json';
+import links from '@/data/links.json';
 import { mainLink, mainLinkTitle, mainList, pageLayout } from '@/styles';
 import Link from 'next/link';
 

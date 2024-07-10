@@ -1,7 +1,7 @@
 'use client';
 
 import { IcoMoon, IcoSun } from '@/assets/icons';
-import { useTheme } from '@/contexts/theme';
+import { useTheme } from '@/libs/contexts/theme';
 import { themeSwitchClassName, themeSwitchIconsWrapper } from '@/styles';
 
 export default function Switch() {

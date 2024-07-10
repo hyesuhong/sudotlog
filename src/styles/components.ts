@@ -130,10 +130,22 @@ export const tocStickyWrapperClassName = css({
 });
 
 export const tocListClassName = css({
-	p: 4,
-	mb: 4,
+	display: 'flex',
+	flexDir: 'column',
+	rowGap: 1,
+	py: 1,
+	px: 3,
 	maxH: 'calc(100vh - 11.25rem )',
-	borderBottom: '1px solid {colors.muted}',
+	borderLeft: '1px solid {colors.muted}',
+	textStyle: 'label',
+
+	'& a': {
+		color: 'grey',
+	},
+
+	'& a.active': {
+		color: 'primary',
+	},
 });
 
 export const tocTopButtonClassName = css({
@@ -213,5 +225,32 @@ export const copyButton = css({
 	'& > svg': {
 		w: 'full',
 		h: 'full',
+	},
+});
+
+export const buttonClass = css({
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	columnGap: 2,
+
+	minW: 8,
+	h: 8,
+	p: 1,
+
+	bg: 'muted/50',
+	color: 'grey',
+	textStyle: 'label',
+	cursor: 'pointer',
+	transition: 'background 0.2s ease-in, color 0.2s ease-in',
+
+	_hover: {
+		bg: 'muted',
+		color: 'text',
+	},
+
+	'& > svg': {
+		w: 4,
+		h: 4,
 	},
 });

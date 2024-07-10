@@ -1,4 +1,4 @@
-import meta from '@/contents/metadata.json';
+import meta from '@/data/metadata.json';
 import { MetadataRoute } from 'next';
 
 export default function robots(): MetadataRoute.Robots {

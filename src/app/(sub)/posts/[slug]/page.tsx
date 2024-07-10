@@ -1,7 +1,9 @@
+import { Giscus } from '@/components/comments';
 import { BackLink } from '@/components/common';
 import { MdxRemote } from '@/components/post';
-import { convertDateToString } from '@/lib/date';
-import { getAllPostInfo, getPostBySlug } from '@/lib/posts';
+import { TableOfContents } from '@/components/table-of-contents';
+import { generateToc, getAllPostInfo, getPostBySlug } from '@/libs/posts';
+import { convertDateToString } from '@/libs/utils/date';
 import { postDetailLayout, postInfoDate, postInfoTitle } from '@/styles';
 import { Metadata } from 'next';
 
@@ -32,9 +34,11 @@ export async function generateStaticParams() {
 
 export default async function Post({ params: { slug } }: PostPageParams) {
 	const { data, content } = await getPostBySlug(slug);
+	const toc = content ? generateToc(content) : [];
 
 	return (
 		<>
+			<TableOfContents headers={toc} />
 			<section className={postDetailLayout({ position: 'top' })}>
 				<BackLink label='Back to list' />
 				<h1 className={postInfoTitle}>{data.title}</h1>
@@ -43,11 +47,14 @@ export default async function Post({ params: { slug } }: PostPageParams) {
 				</p>
 			</section>
 			{content && (
-				<section
-					className={`content ${postDetailLayout({ position: 'bottom' })}`}
-				>
-					<MdxRemote source={content} />
-				</section>
+				<>
+					<section
+						className={`content ${postDetailLayout({ position: 'bottom' })}`}
+					>
+						<MdxRemote source={content} />
+					</section>
+					<Giscus />
+				</>
 			)}
 		</>
 	);

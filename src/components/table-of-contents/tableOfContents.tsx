@@ -1,19 +1,22 @@
-import { IcoArrowTop } from '@/assets/icons';
-import {
-	tocListClassName,
-	tocStickyWrapperClassName,
-	tocTopButtonClassName,
-	tocWrapperClassName,
-} from '@/styles';
+import { tocStickyWrapperClassName, tocWrapperClassName } from '@/styles';
+import List from './list';
 
-export default function TableOfContents() {
+type Header = {
+	depth: number;
+	text: string;
+	slug: string;
+	sub?: Header[];
+};
+
+type Props = {
+	headers: Header[];
+};
+
+export default function TableOfContents({ headers }: Props) {
 	return (
 		<aside className={tocWrapperClassName}>
 			<div className={tocStickyWrapperClassName}>
-				<ul className={tocListClassName}>content1</ul>
-				<button className={tocTopButtonClassName}>
-					<IcoArrowTop />
-				</button>
+				<List headers={headers} />
 			</div>
 		</aside>
 	);

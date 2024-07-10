@@ -1,7 +1,7 @@
 'use client';
 
 import { IcoGithub } from '@/assets/icons';
-import links from '@/contents/links.json';
+import links from '@/data/links.json';
 import { headerElClassName, iconLinkClassName } from '@/styles';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

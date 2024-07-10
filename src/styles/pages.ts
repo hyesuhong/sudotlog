@@ -78,3 +78,9 @@ export const aboutSection = css({
 		mb: 0,
 	},
 });
+
+export const topButton = css({
+	position: 'fixed',
+	bottom: 6,
+	right: 6,
+});

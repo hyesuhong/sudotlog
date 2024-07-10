@@ -3,7 +3,7 @@ import {
 	headerNavClassName,
 	headerNavLink,
 } from '@/styles';
-import Link from 'next/link';
+import { Link } from '../common';
 
 type Route = { label: string; href: string };
 
