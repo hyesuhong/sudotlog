@@ -49,6 +49,9 @@ export const ThemeProvider = ({
 			setThemeState(newTheme);
 
 			localStorage.setItem(storageKey, newTheme);
+			window.dispatchEvent(
+				new StorageEvent('storage', { key: STORAGE_KEY, newValue: newTheme })
+			);
 		},
 		[theme, storageKey]
 	);

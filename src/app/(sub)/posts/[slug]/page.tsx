@@ -1,5 +1,6 @@
+import { Giscus } from '@/components/comments';
 import { BackLink } from '@/components/common';
-import { Giscus, MdxRemote } from '@/components/post';
+import { MdxRemote } from '@/components/post';
 import { TableOfContents } from '@/components/table-of-contents';
 import { generateToc, getAllPostInfo, getPostBySlug } from '@/libs/posts';
 import { convertDateToString } from '@/libs/utils/date';
