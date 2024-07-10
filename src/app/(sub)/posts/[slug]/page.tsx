@@ -1,5 +1,5 @@
 import { BackLink } from '@/components/common';
-import { MdxRemote } from '@/components/post';
+import { Giscus, MdxRemote } from '@/components/post';
 import { TableOfContents } from '@/components/table-of-contents';
 import { generateToc, getAllPostInfo, getPostBySlug } from '@/libs/posts';
 import { convertDateToString } from '@/libs/utils/date';
@@ -46,11 +46,14 @@ export default async function Post({ params: { slug } }: PostPageParams) {
 				</p>
 			</section>
 			{content && (
-				<section
-					className={`content ${postDetailLayout({ position: 'bottom' })}`}
-				>
-					<MdxRemote source={content} />
-				</section>
+				<>
+					<section
+						className={`content ${postDetailLayout({ position: 'bottom' })}`}
+					>
+						<MdxRemote source={content} />
+					</section>
+					<Giscus />
+				</>
 			)}
 		</>
 	);

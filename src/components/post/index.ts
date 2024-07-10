@@ -1,3 +1,4 @@
+import Giscus from './giscus';
 import MdxRemote from './mdx-remote';
 
-export { MdxRemote };
+export { Giscus, MdxRemote };

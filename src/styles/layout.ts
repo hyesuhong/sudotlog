@@ -45,6 +45,10 @@ export const postDetailLayout = cva({
 			},
 			bottom: {
 				pt: 20,
+
+				'&:not(last-child)': {
+					pb: 20,
+				},
 			},
 		},
 	},

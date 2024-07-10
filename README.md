@@ -21,8 +21,8 @@
 
 ## Todo
 
-- [ ] Table of Contents
-- [ ] Comment with [Giscus](https://github.com/giscus/giscus)
+- [x] Table of Contents
+- [x] Comment with [Giscus](https://github.com/giscus/giscus)
 - [ ] Google Analytics
 - [x] Error, Not Found, Loading
 - [x] Redesign(main page, header, footer)
