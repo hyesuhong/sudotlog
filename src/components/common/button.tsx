@@ -1,20 +1,15 @@
 import { buttonClass } from '@/styles';
-import { MouseEventHandler, ReactNode } from 'react';
+import { ButtonProps } from '@/types/components';
 
-interface Props {
-	icon?: {
-		position: 'FORWARD' | 'BACKWARD' | 'STANDONLY';
-		children: ReactNode;
-	};
-	label?: string;
-	disabled?: boolean;
-	onClick?: MouseEventHandler<HTMLButtonElement>;
-	className?: string;
-}
-
-export default function Button({ icon, label, className, ...props }: Props) {
+export default function Button({
+	icon,
+	label,
+	className,
+	hasBg = true,
+	...props
+}: ButtonProps) {
 	return (
-		<button className={`${buttonClass} ${className}`} {...props}>
+		<button className={`${buttonClass({ hasBg })} ${className}`} {...props}>
 			{icon && icon.position === 'FORWARD' && icon.children}
 			{icon && icon.position === 'STANDONLY' ? icon.children : label}
 			{icon && icon.position === 'BACKWARD' && icon.children}

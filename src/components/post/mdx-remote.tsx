@@ -1,6 +1,11 @@
 import plainDarkTheme from '@/styles/syntax/plain-dark-theme.json';
 import plainLightTheme from '@/styles/syntax/plain-light-theme.json';
-import { MDXRemote, MDXRemoteProps } from 'next-mdx-remote/rsc';
+import {
+	MDXRemoteComponents,
+	MDXRemoteOptions,
+	MDXRemoteWithoutSource,
+} from '@/types/mdx';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 import { Suspense } from 'react';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeExternalLinks from 'rehype-external-links';
@@ -11,9 +16,7 @@ import remarkUnwrapImages from 'remark-unwrap-images';
 import * as C from '../common';
 import * as E from './elements';
 
-type Props = Pick<MDXRemoteProps, 'source'>;
-
-const options: MDXRemoteProps['options'] = {
+const options: MDXRemoteOptions = {
 	mdxOptions: {
 		format: 'mdx',
 		remarkPlugins: [remarkGfm, remarkUnwrapImages],
@@ -55,7 +58,7 @@ const options: MDXRemoteProps['options'] = {
 	},
 };
 
-const components: MDXRemoteProps['components'] = {
+const components: MDXRemoteComponents = {
 	h1: ({ children, ...props }) => (
 		<C.Heading type='h1' {...props}>
 			{children}
@@ -110,7 +113,7 @@ const components: MDXRemoteProps['components'] = {
 	},
 };
 
-export default function MdxRemote(props: Props) {
+export default function MdxRemote(props: MDXRemoteWithoutSource) {
 	return (
 		<Suspense fallback='loading...'>
 			<MDXRemote {...props} options={options} components={components} />

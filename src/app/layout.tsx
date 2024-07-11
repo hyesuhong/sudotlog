@@ -5,6 +5,7 @@ import meta from '@/data/metadata.json';
 import { jetBrainsMono, pretendard } from '@/libs/utils/font';
 import '@/styles/globals.css';
 import type { Metadata } from 'next';
+import { PropsWithChildren } from 'react';
 
 export const metadata: Metadata = {
 	metadataBase: new URL(meta.site),
@@ -37,11 +38,7 @@ export const metadata: Metadata = {
 	},
 };
 
-export default function RootLayout({
-	children,
-}: Readonly<{
-	children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
 	return (
 		<html
 			lang='en'

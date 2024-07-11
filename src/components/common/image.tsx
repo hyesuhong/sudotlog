@@ -1,20 +1,20 @@
 'use client';
 
+import { ImageProps } from '@/types/components';
 import NextImage, { ImageLoader } from 'next/image';
 import { SyntheticEvent, useState } from 'react';
-
-type Props = {
-	src?: string;
-	alt?: string;
-	title?: string;
-};
 
 const initialSize = {
 	width: 0,
 	height: 0,
 };
 
-export default function Image({ src, alt, title }: Props) {
+export default function Image({
+	src,
+	alt,
+	title,
+	hasWrapper = true,
+}: ImageProps) {
 	const [size, setSize] = useState(initialSize);
 	const imageLoader: ImageLoader = ({ src, width, quality }) => {
 		return `${src}?w=${width}&q=${quality || 80}`;
@@ -28,7 +28,7 @@ export default function Image({ src, alt, title }: Props) {
 		setSize({ width: naturalWidth, height: naturalHeight });
 	};
 
-	return (
+	return hasWrapper ? (
 		<figure>
 			{src ? (
 				<NextImage
@@ -45,5 +45,21 @@ export default function Image({ src, alt, title }: Props) {
 			)}
 			{title && <figcaption>{title}</figcaption>}
 		</figure>
+	) : (
+		<>
+			{src ? (
+				<NextImage
+					src={src}
+					alt={alt || ''}
+					width={size.width}
+					height={size.height}
+					loader={imageLoader}
+					onLoad={onLoad}
+					title={title}
+				/>
+			) : (
+				<>empty</>
+			)}
+		</>
 	);
 }

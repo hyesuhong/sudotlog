@@ -3,16 +3,12 @@
 import { Heading } from '@/components/common';
 import { HrLine } from '@/components/post/elements';
 import { pageLayout, twoColumnsLayout } from '@/styles';
+import { ErrorPageProps } from '@/types/components';
 import Link from 'next/link';
 
 import { useEffect } from 'react';
 
-type Props = {
-	error: Error & { digest?: string };
-	reset: () => void;
-};
-
-export default function ErrorPage({ error, reset }: Props) {
+export default function ErrorPage({ error, reset }: ErrorPageProps) {
 	useEffect(() => {
 		console.error(error);
 	}, [error]);

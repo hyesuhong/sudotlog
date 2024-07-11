@@ -1,36 +1,15 @@
+import {
+	AllPostsReturns,
+	GroupedPostsByYear,
+	Header,
+	OrderBy,
+	PostFrontMatter,
+} from '@/types/posts';
 import fs from 'fs/promises';
 import matter from 'gray-matter';
 import { notFound } from 'next/navigation';
 import { join } from 'path';
 import { cwd } from 'process';
-
-type PostFrontMatter = {
-	title: string;
-	description?: string;
-	date: Date;
-	isDraft: boolean;
-	tags?: string[];
-};
-
-type AllPostsReturns = {
-	slug: string;
-	data: PostFrontMatter;
-	content?: string;
-};
-
-type GroupedPostsByYear = {
-	year: number;
-	posts: AllPostsReturns[];
-};
-
-type OrderBy = 'ASC' | 'DESC';
-
-type Header = {
-	depth: number;
-	text: string;
-	slug: string;
-	sub?: Header[];
-};
 
 const TARGET_DIR = join(cwd(), 'src', 'data', 'posts');
 

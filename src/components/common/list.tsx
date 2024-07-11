@@ -1,11 +1,6 @@
-import { ReactNode } from 'react';
+import { ListProps } from '@/types/components';
 
-type Props = {
-	type: 'ordered' | 'unordered';
-	children?: ReactNode;
-};
-
-export default function List({ type, children }: Props) {
+export default function List({ type, children }: ListProps) {
 	switch (type) {
 		case 'ordered':
 			return <ol>{children}</ol>;

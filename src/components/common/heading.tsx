@@ -1,10 +1,6 @@
-import { HTMLAttributes } from 'react';
+import { HeadingProps } from '@/types/components';
 
-interface Props extends HTMLAttributes<HTMLHeadingElement> {
-	type: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-}
-
-export default function Heading({ type, children, ...props }: Props) {
+export default function Heading({ type, children, ...props }: HeadingProps) {
 	switch (type) {
 		case 'h1':
 			return <h1 {...props}>{children}</h1>;

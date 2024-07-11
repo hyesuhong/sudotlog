@@ -1,18 +1,8 @@
 import { tocListClassName } from '@/styles';
+import { TocProps } from '@/types/posts';
 import { Link } from '../common';
 
-type Header = {
-	depth: number;
-	text: string;
-	slug: string;
-	sub?: Header[];
-};
-
-type Props = {
-	headers: Header[];
-};
-
-export default function List({ headers }: Props) {
+export default function List({ headers }: TocProps) {
 	return (
 		<ul className={tocListClassName}>
 			{headers.map((header, index) => (

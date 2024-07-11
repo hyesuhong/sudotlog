@@ -1,18 +1,8 @@
 import { tocStickyWrapperClassName, tocWrapperClassName } from '@/styles';
+import { TocProps } from '@/types/posts';
 import List from './list';
 
-type Header = {
-	depth: number;
-	text: string;
-	slug: string;
-	sub?: Header[];
-};
-
-type Props = {
-	headers: Header[];
-};
-
-export default function TableOfContents({ headers }: Props) {
+export default function TableOfContents({ headers }: TocProps) {
 	return (
 		<aside className={tocWrapperClassName}>
 			<div className={tocStickyWrapperClassName}>

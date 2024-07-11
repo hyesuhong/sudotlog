@@ -5,17 +5,12 @@ import { TableOfContents } from '@/components/table-of-contents';
 import { generateToc, getAllPostInfo, getPostBySlug } from '@/libs/posts';
 import { convertDateToString } from '@/libs/utils/date';
 import { postDetailLayout, postInfoDate, postInfoTitle } from '@/styles';
+import { PageWithSlugProps } from '@/types/components';
 import { Metadata } from 'next';
-
-interface PostPageParams {
-	params: {
-		slug: string;
-	};
-}
 
 export async function generateMetadata({
 	params,
-}: PostPageParams): Promise<Metadata> {
+}: PageWithSlugProps): Promise<Metadata> {
 	const { slug } = params;
 
 	const postInfo = await getPostBySlug(slug);
@@ -32,7 +27,7 @@ export async function generateStaticParams() {
 	return posts.map((post) => ({ slug: post.slug }));
 }
 
-export default async function Post({ params: { slug } }: PostPageParams) {
+export default async function Post({ params: { slug } }: PageWithSlugProps) {
 	const { data, content } = await getPostBySlug(slug);
 	const toc = content ? generateToc(content) : [];
 
