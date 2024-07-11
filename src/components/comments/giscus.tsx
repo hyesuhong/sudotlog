@@ -1,14 +1,13 @@
 'use client';
 
 import { useTheme } from '@/libs/contexts/theme';
+import { GiscusThemeType } from '@/types/theme';
 import { useCallback, useEffect } from 'react';
 
 const giscusTheme = {
 	dark: 'https://giscus.app/themes/noborder_gray.css',
 	light: 'https://giscus.app/themes/noborder_light.css',
 };
-
-type GiscusThemeType = keyof typeof giscusTheme;
 
 export default function Giscus() {
 	const { theme } = useTheme();

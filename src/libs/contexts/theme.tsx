@@ -1,9 +1,11 @@
 'use client';
 
 import {
-	Dispatch,
-	PropsWithChildren,
-	SetStateAction,
+	SetThemeFunction,
+	ThemeProviderProps,
+	UseThemeProps,
+} from '@/types/theme';
+import {
 	createContext,
 	useCallback,
 	useContext,
@@ -11,19 +13,6 @@ import {
 	useMemo,
 	useState,
 } from 'react';
-
-interface UseThemeProps {
-	themes: string[];
-	setTheme: Dispatch<SetStateAction<string>>;
-	theme?: string;
-}
-
-interface ThemeProviderProps extends PropsWithChildren {
-	themes?: string[];
-	storageKey?: string;
-}
-
-type SetThemeFunction = (value: string) => string;
 
 const MEDIA_DARK = '(prefers-color-scheme: dark)';
 const STORAGE_KEY = 'theme';

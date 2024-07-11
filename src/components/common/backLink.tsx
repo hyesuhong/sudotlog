@@ -2,13 +2,10 @@
 
 import { IcoArrowLeft } from '@/assets/icons';
 import { backLinkClassName } from '@/styles';
+import { ComponentWithLabel } from '@/types/components';
 import { useRouter } from 'next/navigation';
 
-type Props = {
-	label?: string;
-};
-
-export default function BackLink({ label }: Props) {
+export default function BackLink({ label }: ComponentWithLabel) {
 	const router = useRouter();
 
 	const onClick = () => router.back();

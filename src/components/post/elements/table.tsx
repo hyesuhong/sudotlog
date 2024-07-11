@@ -1,8 +1,5 @@
+import { TableDataProps } from '@/types/components';
 import { PropsWithChildren } from 'react';
-
-interface TableDataProps extends PropsWithChildren {
-	textAlign?: string;
-}
 
 export const Table = ({ children }: PropsWithChildren) => {
 	return <table>{children}</table>;

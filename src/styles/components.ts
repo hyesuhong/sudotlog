@@ -208,49 +208,56 @@ export const checkboxClassName = css({
 
 export const copyButton = css({
 	position: 'absolute',
-	top: 2,
+	top: 1.5,
 	right: 2,
-	w: 7,
-	h: 7,
-	opacity: 0.6,
-
-	md: {
-		cursor: 'pointer',
-
-		_hover: {
-			opacity: 1,
-		},
-	},
-
-	'& > svg': {
-		w: 'full',
-		h: 'full',
-	},
+	minW: '7!',
+	h: '7!',
 });
 
-export const buttonClass = css({
-	display: 'flex',
-	justifyContent: 'center',
-	alignItems: 'center',
-	columnGap: 2,
+export const buttonClass = cva({
+	base: {
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
+		columnGap: 2,
 
-	minW: 8,
-	h: 8,
-	p: 1,
+		minW: 8,
+		h: 8,
+		p: 1,
 
-	bg: 'muted/50',
-	color: 'grey',
-	textStyle: 'label',
-	cursor: 'pointer',
-	transition: 'background 0.2s ease-in, color 0.2s ease-in',
+		color: 'grey',
+		textStyle: 'label',
 
-	_hover: {
-		bg: 'muted',
-		color: 'text',
+		md: {
+			cursor: 'pointer',
+			transition: 'background 0.2s ease-in, color 0.2s ease-in',
+
+			_hover: {
+				opacity: 1,
+			},
+		},
+
+		'& > svg': {
+			w: 'full',
+			h: 'full',
+		},
 	},
-
-	'& > svg': {
-		w: 4,
-		h: 4,
+	variants: {
+		hasBg: {
+			true: {
+				bg: 'muted/50',
+				md: {
+					_hover: {
+						bg: 'muted',
+					},
+				},
+			},
+			false: {
+				bg: 'transparent',
+			},
+		},
+	},
+	defaultVariants: {
+		hasBg: true,
 	},
 });

@@ -1,7 +1,9 @@
 'use client';
 
+import { IcoCheck, IcoCopy } from '@/assets/icons';
+import { Button } from '@/components/common';
+import { copyButton } from '@/styles';
 import { HTMLAttributes, useEffect, useRef, useState } from 'react';
-import CopyButton from './copyButton';
 
 export default function CodeBlock({
 	children,
@@ -37,7 +39,15 @@ export default function CodeBlock({
 
 	return (
 		<figure {...props} ref={ref}>
-			<CopyButton onClick={handleCopyClick} copyState={copyState} />
+			<Button
+				icon={{
+					position: 'STANDONLY',
+					children: copyState ? <IcoCheck /> : <IcoCopy />,
+				}}
+				onClick={handleCopyClick}
+				className={copyButton}
+				hasBg={false}
+			/>
 			{children}
 		</figure>
 	);
