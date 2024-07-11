@@ -9,7 +9,7 @@ import fs from 'fs/promises';
 import matter from 'gray-matter';
 import { notFound } from 'next/navigation';
 import { join } from 'path';
-import { cwd } from 'process';
+import { cwd, env } from 'process';
 
 const TARGET_DIR = join(cwd(), 'src', 'data', 'posts');
 
@@ -24,7 +24,7 @@ export async function getAllPostInfo() {
 		slugs.map((slug) => _getPostBySlug(slug, { onlyFrontMatter: true }))
 	);
 
-	return _filterDraft(data);
+	return env.NODE_ENV === 'development' ? data : _filterDraft(data);
 }
 
 export async function getAllPostInfoGroupByDate() {
