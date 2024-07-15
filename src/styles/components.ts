@@ -148,16 +148,6 @@ export const tocListClassName = css({
 	},
 });
 
-export const tocTopButtonClassName = css({
-	w: 7,
-	h: 7,
-	cursor: 'pointer',
-	'& > svg': {
-		w: 'full',
-		h: 'full',
-	},
-});
-
 export const backLinkClassName = css({
 	display: 'flex',
 	alignItems: 'center',
@@ -208,10 +198,8 @@ export const checkboxClassName = css({
 
 export const copyButton = css({
 	position: 'absolute',
-	top: 1.5,
+	top: 1,
 	right: 2,
-	minW: '7!',
-	h: '7!',
 });
 
 export const buttonClass = cva({
@@ -221,7 +209,6 @@ export const buttonClass = cva({
 		alignItems: 'center',
 		columnGap: 2,
 
-		minW: 8,
 		h: 8,
 		p: 1,
 
@@ -256,8 +243,17 @@ export const buttonClass = cva({
 				bg: 'transparent',
 			},
 		},
+		isIconOnly: {
+			true: {
+				w: 8,
+			},
+			false: {
+				minW: 8,
+			},
+		},
 	},
 	defaultVariants: {
 		hasBg: true,
+		isIconOnly: false,
 	},
 });

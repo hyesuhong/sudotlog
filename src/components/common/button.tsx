@@ -9,7 +9,10 @@ export default function Button({
 	...props
 }: ButtonProps) {
 	return (
-		<button className={`${buttonClass({ hasBg })} ${className}`} {...props}>
+		<button
+			className={`${buttonClass({ hasBg, isIconOnly: icon && icon.position === 'STANDONLY' })} ${className}`}
+			{...props}
+		>
 			{icon && icon.position === 'FORWARD' && icon.children}
 			{icon && icon.position === 'STANDONLY' ? icon.children : label}
 			{icon && icon.position === 'BACKWARD' && icon.children}
