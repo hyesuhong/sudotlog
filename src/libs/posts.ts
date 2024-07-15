@@ -39,6 +39,10 @@ export async function getAllPostInfoGroupByDate() {
 export async function getPostBySlug(slug: string) {
 	const post = await _getPostBySlug(slug);
 
+	if (env.NODE_ENV !== 'development' && post.data.isDraft) {
+		return notFound();
+	}
+
 	return post;
 }
 
