@@ -2,7 +2,7 @@
 title: 블로그 제작 회고
 description: ''
 date: 2024-07-09
-isDraft: true
+isDraft: false
 tags:
   - Blog
   - 'Next.js'
