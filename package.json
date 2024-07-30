@@ -17,8 +17,10 @@
 		]
 	},
 	"dependencies": {
+		"@next/third-parties": "^14.2.5",
 		"next": "14.2.3",
 		"next-mdx-remote": "^5.0.0",
+		"next-themes": "^0.3.0",
 		"react": "^18",
 		"react-dom": "^18",
 		"rehype-autolink-headings": "^7.1.0",
