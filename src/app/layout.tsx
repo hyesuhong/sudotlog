@@ -1,4 +1,5 @@
 import { Footer } from '@/components/footer';
+import { GoogleTagManager } from '@/components/google';
 import { Header } from '@/components/header';
 import { ThemeProvider } from '@/components/theme';
 import meta from '@/data/metadata.json';
@@ -44,6 +45,7 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
 			lang='en'
 			className={`${pretendard.variable} ${jetBrainsMono.variable}`}
 		>
+			<GoogleTagManager />
 			<body>
 				<ThemeProvider>
 					<Header />
