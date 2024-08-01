@@ -1,51 +1,15 @@
 'use client';
 
 import { useTheme } from '@/libs/contexts/theme';
-import { GiscusThemeType } from '@/types/theme';
-import { useCallback, useEffect } from 'react';
-
-const giscusTheme = {
-	dark: 'https://giscus.app/themes/noborder_gray.css',
-	light: 'https://giscus.app/themes/noborder_light.css',
-};
+import { generateGiscusOption } from '@/libs/utils/giscus';
+import { useEffect } from 'react';
 
 export default function Giscus() {
 	const { theme } = useTheme();
 	const initialTheme = theme === 'light' ? 'light' : 'dark';
 
-	const changeGiscusTheme = useCallback((theme: GiscusThemeType) => {
-		const iframe = document.querySelector<HTMLIFrameElement>(
-			'iframe.giscus-frame'
-		);
-
-		if (!iframe) {
-			return;
-		}
-
-		iframe.contentWindow?.postMessage(
-			{
-				giscus: {
-					setConfig: {
-						theme: giscusTheme[theme],
-					},
-				},
-			},
-			'https://giscus.app'
-		);
-	}, []);
-
-	const handleStorage = (ev: StorageEvent) => {
-		const { newValue } = ev;
-
-		if (!newValue || (newValue !== 'light' && newValue !== 'dark')) {
-			return;
-		}
-
-		changeGiscusTheme(newValue);
-	};
-
 	useEffect(() => {
-		const giscusAttrs = _generateGiscusOption(initialTheme);
+		const giscusAttrs = generateGiscusOption(initialTheme);
 
 		const section = document.querySelector('section.giscus');
 
@@ -55,13 +19,6 @@ export default function Giscus() {
 		);
 
 		section?.appendChild(script);
-
-		window.addEventListener('storage', handleStorage);
-
-		() => {
-			console.log('disconnect');
-			window.removeEventListener('storage', handleStorage);
-		};
 	}, []);
 
 	return (
@@ -70,22 +27,3 @@ export default function Giscus() {
 		</>
 	);
 }
-
-const _generateGiscusOption = (theme: GiscusThemeType) => {
-	return {
-		src: 'https://giscus.app/client.js',
-		'data-repo': 'hyesuhong/sudotlog',
-		'data-repo-id': 'R_kgDOL5KkyQ',
-		'data-category': 'General',
-		'data-category-id': 'DIC_kwDOL5Kkyc4Cgqm9',
-		'data-mapping': 'pathname',
-		'data-strict': '0',
-		'data-reactions-enabled': '1',
-		'data-emit-metadata': '0',
-		'data-input-position': 'top',
-		'data-theme': giscusTheme[theme],
-		'data-lang': 'ko',
-		crossorigin: 'anonymous',
-		async: 'true',
-	};
-};
