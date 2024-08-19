@@ -145,6 +145,7 @@ export const tocListClassName = css({
 
 	'& a.active': {
 		color: 'primary',
+		fontWeight: 400,
 	},
 });
 
