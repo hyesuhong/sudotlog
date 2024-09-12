@@ -4,33 +4,54 @@ export const mainLinkTitle = css({ textStyle: 'mainTitle' });
 
 export const mainList = css({
 	mt: 8,
+	display: 'flex',
+	flexDir: 'column',
+	w: 'full',
+	lg: {
+		flexDir: 'row',
+		h: '32vw',
+	},
+});
+
+export const mainItem = css({
+	flex: 1,
+	p: 6,
+	_last: {
+		borderTop: '1px solid {colors.muted}',
+	},
+	lg: {
+		p: 2,
+		_last: {
+			borderTop: 'none',
+			borderLeft: '1px solid {colors.muted}',
+		},
+	},
 });
 
 export const mainLink = css({
-	position: 'relative',
+	display: 'flex',
+	flexDir: 'column',
+	justifyContent: 'center',
+	alignItems: 'center',
+	h: 'full',
 
 	'& span': {
-		transition: 'opacity 0.2s ease-in',
-
+		transition: 'color 0.2s ease-in',
+		_first: {
+			textStyle: 'caption',
+			mb: 4,
+		},
 		_last: {
-			content: 'attr(data-desc)',
-			position: 'absolute',
-			top: '50%',
-			left: '50%',
-			transform: 'translate(-50%,-50%)',
-			whiteSpace: 'nowrap',
-			opacity: 0,
+			textDecoration: 'underline',
+			textDecorationThickness: '1px',
+			textUnderlineOffset: '4px',
 		},
 	},
 
 	_hover: {
-		color: 'primary',
 		'& span': {
-			_first: {
-				opacity: 0,
-			},
 			_last: {
-				opacity: 1,
+				color: 'primary',
 			},
 		},
 	},

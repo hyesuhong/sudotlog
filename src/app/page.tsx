@@ -1,5 +1,11 @@
 import links from '@/data/links.json';
-import { mainLink, mainLinkTitle, mainList, pageLayout } from '@/styles';
+import {
+	mainItem,
+	mainLink,
+	mainLinkTitle,
+	mainList,
+	pageLayout,
+} from '@/styles';
 import Link from 'next/link';
 
 export default function Home() {
@@ -7,11 +13,11 @@ export default function Home() {
 		<main className={pageLayout({ isMain: true })}>
 			<h1 className={mainLinkTitle}>Su.log</h1>
 			<ul className={mainList}>
-				{links.internal.map((link, index) => (
-					<li key={index}>
+				{links.internal.map((link) => (
+					<li key={link.href} className={mainItem}>
 						<Link href={link.href} className={mainLink}>
-							<span>{link.label}</span>
 							<span>{link.description}</span>
+							<span>{link.label}</span>
 						</Link>
 					</li>
 				))}

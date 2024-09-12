@@ -48,6 +48,11 @@ export const globalCss = defineGlobalStyles({
 			},
 		},
 	},
+	'.postList p:first-child': {
+		whiteSpace: 'nowrap',
+		overflow: 'hidden',
+		textOverflow: 'ellipsis',
+	},
 	'.postList p:last-child': {
 		justifySelf: 'end',
 	},
