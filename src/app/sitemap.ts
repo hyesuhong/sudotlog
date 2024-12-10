@@ -1,9 +1,9 @@
 import meta from '@/data/metadata.json';
-import { getAllPostInfo } from '@/libs/posts';
+import { posts } from '@/libs/article';
 import { MetadataRoute } from 'next';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-	const posts = await getAllPostInfo();
+	const postInfos = await posts.getAllInfo();
 
 	return [
 		{
@@ -12,6 +12,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		{
 			url: `${meta.site}/posts`,
 		},
-		...posts.map((post) => ({ url: `${meta.site}/posts/${post.slug}` })),
+		...postInfos.map((post) => ({ url: `${meta.site}/posts/${post.slug}` })),
 	];
 }

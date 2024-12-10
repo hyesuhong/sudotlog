@@ -1,4 +1,4 @@
-import { getAllPostInfoGroupByDate } from '@/libs/posts';
+import { posts } from '@/libs/article';
 import { convertDateToString } from '@/libs/utils/date';
 import { listYear, twoColumnsLayout } from '@/styles';
 import { Metadata } from 'next';
@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 export default async function Page() {
-	const infos = await getAllPostInfoGroupByDate();
+	const infos = await posts.getAllInfoGroupByDate();
 
 	return infos.length > 0 ? (
 		<>

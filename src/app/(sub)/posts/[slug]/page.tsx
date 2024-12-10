@@ -2,8 +2,9 @@ import { Giscus } from '@/components/comments';
 import { BackLink } from '@/components/common';
 import { MdxRemote } from '@/components/post';
 import { TableOfContents } from '@/components/table-of-contents';
-import { generateToc, getAllPostInfo, getPostBySlug } from '@/libs/posts';
+import { posts } from '@/libs/article';
 import { convertDateToString } from '@/libs/utils/date';
+import { generateToc } from '@/libs/utils/table-of-contents';
 import { postDetailLayout, postInfoDate, postInfoTitle } from '@/styles';
 import { PageWithSlugProps } from '@/types/components';
 import { Metadata } from 'next';
@@ -13,7 +14,7 @@ export async function generateMetadata({
 }: PageWithSlugProps): Promise<Metadata> {
 	const { slug } = params;
 
-	const postInfo = await getPostBySlug(slug);
+	const postInfo = await posts.getBySlug(slug);
 
 	return {
 		title: postInfo.data.title,
@@ -23,12 +24,12 @@ export async function generateMetadata({
 }
 
 export async function generateStaticParams() {
-	const posts = await getAllPostInfo();
-	return posts.map((post) => ({ slug: post.slug }));
+	const infos = await posts.getAllInfo();
+	return infos.map((post) => ({ slug: post.slug }));
 }
 
 export default async function Post({ params: { slug } }: PageWithSlugProps) {
-	const { data, content } = await getPostBySlug(slug);
+	const { data, content } = await posts.getBySlug(slug);
 	const toc = content ? generateToc(content) : [];
 
 	return (
