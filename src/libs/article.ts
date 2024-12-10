@@ -153,3 +153,4 @@ class Article {
 }
 
 export const posts = new Article('posts');
+export const notes = new Article('notes');

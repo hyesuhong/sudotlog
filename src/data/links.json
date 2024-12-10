@@ -9,6 +9,11 @@
 			"label": "Posts",
 			"href": "/posts",
 			"description": "Let's check logs"
+		},
+		{
+			"label": "Notes",
+			"href": "/notes",
+			"description": "Knowledge archive"
 		}
 	],
 	"external": {

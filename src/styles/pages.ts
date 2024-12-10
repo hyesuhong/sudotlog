@@ -16,14 +16,16 @@ export const mainList = css({
 export const mainItem = css({
 	flex: 1,
 	p: 6,
+	borderBottom: '1px solid {colors.muted}',
 	_last: {
-		borderTop: '1px solid {colors.muted}',
+		borderBottom: 'none',
 	},
 	lg: {
 		p: 2,
+		borderBottom: 'none',
+		borderRight: '1px solid {colors.muted}',
 		_last: {
-			borderTop: 'none',
-			borderLeft: '1px solid {colors.muted}',
+			borderRight: 'none',
 		},
 	},
 });
