@@ -1,15 +1,15 @@
-import { posts } from '@/libs/article';
+import { notes } from '@/libs/article';
 import { convertDateToString } from '@/libs/utils/date';
 import { listYear, twoColumnsLayout } from '@/styles';
 import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-	title: 'Posts',
+	title: 'Notes',
 };
 
 export default async function Page() {
-	const infos = await posts.getAllInfoGroupByDate();
+	const infos = await notes.getAllInfoGroupByDate();
 
 	return infos.length > 0 ? (
 		<>
@@ -19,7 +19,7 @@ export default async function Page() {
 					<ul className='postList'>
 						{posts.map((post, index) => (
 							<li key={index}>
-								<Link href={`/posts/${post.slug}`}>
+								<Link href={`/notes/${post.slug}`}>
 									<p>{post.data.title}</p>
 									<p>{convertDateToString(post.data.date)}</p>
 								</Link>
