@@ -14,15 +14,12 @@
 ![MDX](https://img.shields.io/badge/MDX-000000?style=flat-square&logo=mdx&logoColor=white)
 
 **Styling**:
-![Tailwind CSS](https://img.shields.io/badge/TailwindCSS-000000?style=flat-square&logo=tailwindcss&logoColor=white)
+![panda CSS](https://img.shields.io/badge/🐼-Panda_CSS-000000?style=flat-square&labelColor=black)
 
 **Deployment**:
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=flat-square&logo=vercel&logoColor=white)
 
-## Todo
+## TODO
 
-- [x] Table of Contents
-- [x] Comment with [Giscus](https://github.com/giscus/giscus)
-- [ ] Google Analytics
-- [x] Error, Not Found, Loading
-- [x] Redesign(main page, header, footer)
+- [ ] Upgrade Next.js version
+- [ ] Change css library
