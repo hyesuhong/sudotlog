@@ -13,8 +13,8 @@ import rehypePrettyCode from 'rehype-pretty-code';
 import rehypeSlug from 'rehype-slug';
 import remarkGfm from 'remark-gfm';
 import remarkUnwrapImages from 'remark-unwrap-images';
-import * as C from '../common';
-import * as E from './elements';
+import * as Common from '../common';
+import * as Element from './elements';
 
 const options: MDXRemoteOptions = {
 	mdxOptions: {
@@ -60,63 +60,62 @@ const options: MDXRemoteOptions = {
 
 const components: MDXRemoteComponents = {
 	h1: ({ children, ...props }) => (
-		<C.Heading type='h1' {...props}>
+		<Common.Heading type='h1' {...props}>
 			{children}
-		</C.Heading>
+		</Common.Heading>
 	),
 	h2: ({ children, ...props }) => (
-		<C.Heading type='h2' {...props}>
+		<Common.Heading type='h2' {...props}>
 			{children}
-		</C.Heading>
+		</Common.Heading>
 	),
 	h3: ({ children, ...props }) => (
-		<C.Heading type='h3' {...props}>
+		<Common.Heading type='h3' {...props}>
 			{children}
-		</C.Heading>
+		</Common.Heading>
 	),
 	h4: ({ children, ...props }) => (
-		<C.Heading type='h4' {...props}>
+		<Common.Heading type='h4' {...props}>
 			{children}
-		</C.Heading>
+		</Common.Heading>
 	),
 	h5: ({ children, ...props }) => (
-		<C.Heading type='h5' {...props}>
+		<Common.Heading type='h5' {...props}>
 			{children}
-		</C.Heading>
+		</Common.Heading>
 	),
 	h6: ({ children, ...props }) => (
-		<C.Heading type='h6' {...props}>
+		<Common.Heading type='h6' {...props}>
 			{children}
-		</C.Heading>
+		</Common.Heading>
 	),
 	p: ({ children }) => {
-		return <C.Text>{children}</C.Text>;
+		return <Common.Text>{children}</Common.Text>;
 	},
-	ul: ({ children }) => <C.List type='unordered'>{children}</C.List>,
-	ol: ({ children }) => <C.List type='ordered'>{children}</C.List>,
-	table: ({ children }) => <E.Table>{children}</E.Table>,
-	th: ({ children }) => <E.Th>{children}</E.Th>,
+	ul: ({ children }) => <Common.List type='unordered'>{children}</Common.List>,
+	ol: ({ children }) => <Common.List type='ordered'>{children}</Common.List>,
+	table: ({ children }) => <Element.Table>{children}</Element.Table>,
+	th: ({ children }) => <Element.Th>{children}</Element.Th>,
 	td: ({ children, style }) => {
-		return <E.Td textAlign={style?.textAlign}>{children}</E.Td>;
+		return <Element.Td textAlign={style?.textAlign}>{children}</Element.Td>;
 	},
-	img: ({ src, alt, title }) => <C.Image src={src} alt={alt} title={title} />,
-	a: (props) => <C.Link {...props} />,
-	blockquote: ({ children }) => <E.Quote>{children}</E.Quote>,
-	hr: () => <E.HrLine />,
+	img: ({ src, alt, title }) => (
+		<Common.Image src={src} alt={alt} title={title} />
+	),
+	a: (props) => <Common.Link {...props} />,
+	blockquote: ({ children }) => <Element.Quote>{children}</Element.Quote>,
+	hr: () => <Element.HrLine />,
 	input: ({ type, ...props }) =>
-		type === 'checkbox' ? <C.Checkbox {...props} /> : <input {...props} />,
+		type === 'checkbox' ? <Common.Checkbox {...props} /> : <input {...props} />,
 	figure: ({ children, ...props }) => {
 		if ('data-rehype-pretty-code-figure' in props) {
-			return <E.CodeBlock {...props}>{children}</E.CodeBlock>;
+			return <Element.CodeBlock {...props}>{children}</Element.CodeBlock>;
 		}
 		return <figure {...props}>{children}</figure>;
 	},
 };
 
-export default function MdxRemote(props: MDXRemoteWithoutSource) {
-	return (
-		<Suspense fallback='loading...'>
-			<MDXRemote {...props} options={options} components={components} />
-		</Suspense>
-	);
+export default async function MdxRemote(props: MDXRemoteWithoutSource) {
+	const remote = await MDXRemote({ source: props.source, options, components });
+	return <Suspense fallback='loading...'>{remote}</Suspense>;
 }
