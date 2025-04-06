@@ -48,10 +48,10 @@ export interface TableDataProps extends PropsWithChildren {
 	textAlign?: string;
 }
 
+type SlugParams = { slug: string };
+
 export interface PageWithSlugProps {
-	params: {
-		slug: string;
-	};
+	params: Promise<SlugParams>;
 }
 
 export interface ErrorPageProps {

@@ -1,5 +1,10 @@
 import { MDXRemoteProps } from 'next-mdx-remote/rsc';
-import { HTMLAttributes, ImgHTMLAttributes, InputHTMLAttributes } from 'react';
+import {
+	HTMLAttributes,
+	ImgHTMLAttributes,
+	InputHTMLAttributes,
+	JSX,
+} from 'react';
 
 export type MDXRemoteWithoutSource = Pick<MDXRemoteProps, 'source'>;
 

@@ -12,7 +12,7 @@ import { Metadata } from 'next';
 export async function generateMetadata({
 	params,
 }: PageWithSlugProps): Promise<Metadata> {
-	const { slug } = params;
+	const { slug } = await params;
 
 	const postInfo = await posts.getBySlug(slug);
 
@@ -28,7 +28,8 @@ export async function generateStaticParams() {
 	return infos.map((post) => ({ slug: post.slug }));
 }
 
-export default async function Post({ params: { slug } }: PageWithSlugProps) {
+export default async function Post({ params }: PageWithSlugProps) {
+	const { slug } = await params;
 	const { data, content } = await posts.getBySlug(slug);
 	const toc = content ? generateToc(content) : [];
 
